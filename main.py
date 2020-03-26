@@ -3,6 +3,7 @@ import os
 import numpy as np
 import re
 import constants
+from kmeans import Kmeans
 
 
 def preprocess(token):
@@ -141,6 +142,11 @@ def main():
     print(f'pruned feature matrix ={ features_pruned[1, 1:100] }\n')
     print(f'target vector shape = { targets.shape }')
     print(f'target vector = { targets[1:100, 0] }\n')
+
+    kmeans = Kmeans(n_clusters=20, max_epochs=10, intra_cluster_variance=False)
+    kmeans.train(features_pruned)
+    print(kmeans.centroids)
+    kmeans.determine_labels(features_pruned, targets)
 
     return 0
 
