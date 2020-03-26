@@ -64,12 +64,14 @@ def main():
                     elif token in token_dictionary:
                         token_frequency[token] += 1
 
+    token_frequency_sorted = sorted(
+        token_frequency.items(), key=lambda x: x[1], reverse=True)
     with open('token_dictionary.txt', 'w') as f:
         for token, id in token_dictionary.items():
             f.write(f'{ token }: { id }\n')
 
     with open('token_frequency.txt', 'w') as f:
-        for token, count in token_frequency.items():
+        for token, count in token_frequency_sorted:
             f.write(f'{ token }: { count }\n')
 
     print(f'total number of files: { file_count }')
