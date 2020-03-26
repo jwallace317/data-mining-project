@@ -1,22 +1,22 @@
-: 1151396
+: 1151965
 the: 145727
 to: 74161
 of: 68907
-a: 60804
+a: 60806
 and: 57266
 in: 45362
 is: 43200
-i: 40541
+i: 40544
 that: 37694
 it: 29420
 for: 28393
 you: 24524
-from: 22374
+from: 22376
 on: 20259
 this: 19873
 be: 19183
 are: 18544
-not: 18389
+not: 18390
 have: 18025
 with: 17245
 as: 15412
@@ -56,7 +56,7 @@ some: 6593
 who: 6359
 out: 6172
 its: 6149
-x: 6046
+x: 6052
 which: 6036
 were: 5923
 more: 5856
@@ -133,7 +133,7 @@ anyone: 2406
 go: 2395
 after: 2394
 need: 2388
-0: 2387
+0: 2388
 work: 2338
 too: 2230
 something: 2227
@@ -151,7 +151,7 @@ back: 2015
 going: 2009
 years: 1963
 information: 1951
-reply: 1899
+reply: 1900
 file: 1888
 using: 1887
 find: 1885
@@ -188,11 +188,11 @@ program: 1647
 case: 1641
 through: 1628
 down: 1627
-&: 1619
+&: 1620
 got: 1619
 made: 1618
 distribution: 1618
-e: 1607
+e: 1610
 key: 1582
 data: 1573
 available: 1568
@@ -211,19 +211,19 @@ david: 1482
 between: 1481
 thats: 1479
 power: 1475
+#: 1474
 few: 1471
-#: 1471
 little: 1467
 come: 1458
 didnt: 1451
 however: 1411
 version: 1407
+c: 1395
 anything: 1394
 fact: 1392
 public: 1387
 around: 1387
-c: 1382
-day: 1381
+day: 1382
 each: 1380
 science: 1379
 give: 1376
@@ -320,7 +320,7 @@ thought: 998
 national: 996
 always: 995
 yes: 993
-above: 991
+above: 992
 control: 989
 person: 983
 less: 976
@@ -336,9 +336,9 @@ seen: 956
 general: 950
 info: 946
 internet: 941
+o: 939
+q: 938
 ever: 935
-o: 935
-q: 934
 means: 933
 yet: 930
 heard: 930
@@ -362,11 +362,11 @@ american: 878
 questions: 875
 keywords: 873
 start: 871
+d: 870
 whether: 866
 dos: 864
 play: 863
 note: 862
-d: 858
 jews: 856
 human: 853
 kind: 852
@@ -385,9 +385,9 @@ phone: 835
 standard: 833
 until: 821
 makes: 821
-m: 816
+b: 820
+m: 818
 ask: 815
-b: 815
 evidence: 813
 disk: 811
 steve: 806
@@ -425,9 +425,9 @@ full: 756
 states: 753
 interested: 753
 issue: 753
+s: 752
 memory: 750
 pretty: 750
-s: 749
 children: 748
 buy: 748
 price: 743
@@ -442,10 +442,10 @@ open: 725
 theres: 725
 pc: 725
 saying: 723
-j: 721
+j: 722
 stuff: 718
+l: 718
 side: 717
-l: 715
 armenian: 714
 hell: 713
 war: 712
@@ -471,10 +471,10 @@ comes: 678
 often: 677
 machine: 675
 almost: 673
+p: 673
 robert: 673
 area: 672
 box: 672
-p: 672
 programs: 671
 everyone: 670
 cost: 670
@@ -506,8 +506,8 @@ mind: 632
 truth: 630
 house: 629
 dept: 627
+n: 627
 known: 626
-n: 626
 consider: 625
 church: 625
 ie: 625
@@ -631,20 +631,20 @@ tin: 521
 sound: 520
 christ: 520
 include: 519
+t: 517
 fine: 517
 western: 516
 except: 516
 thus: 515
 turn: 515
 dead: 515
-t: 514
 posted: 514
 short: 513
 washington: 513
+g: 512
 bus: 511
 clinton: 510
 faq: 510
-g: 509
 ibm: 509
 week: 509
 become: 509
@@ -816,11 +816,11 @@ related: 420
 plus: 420
 previous: 419
 mentioned: 419
+cd: 419
 months: 418
+v: 418
 legal: 418
-cd: 418
 according: 417
-v: 417
 total: 417
 result: 416
 performance: 416
@@ -1192,6 +1192,7 @@ possibly: 283
 effective: 282
 context: 282
 died: 281
+guys: 281
 nuclear: 281
 official: 281
 object: 281
@@ -1199,7 +1200,6 @@ apply: 281
 range: 281
 nsa: 281
 lead: 280
-guys: 280
 clock: 280
 areas: 280
 stated: 279
@@ -1227,6 +1227,7 @@ angeles: 274
 switch: 274
 shipping: 274
 joe: 274
+muslim: 273
 hot: 273
 floppy: 273
 driving: 272
@@ -1234,7 +1235,6 @@ poor: 272
 calls: 272
 account: 272
 multiple: 272
-muslim: 271
 closed: 271
 contains: 271
 modern: 271
@@ -1326,6 +1326,7 @@ miles: 253
 constitution: 253
 ps: 253
 turned: 252
+y: 252
 fit: 252
 reserve: 252
 particularly: 252
@@ -1334,7 +1335,6 @@ requires: 252
 earlier: 251
 ken: 251
 arguments: 251
-y: 251
 types: 251
 handle: 251
 errors: 251
@@ -1466,11 +1466,11 @@ shuttle: 229
 os: 228
 agencies: 228
 gif: 228
+xterm: 228
 fair: 227
 auto: 227
 greg: 227
 management: 227
-xterm: 227
 failed: 226
 justice: 226
 pp: 226
@@ -2635,7 +2635,6 @@ byte: 116
 scientists: 116
 clh: 116
 slave: 115
-^: 115
 turning: 115
 purchased: 115
 plans: 115
@@ -4781,6 +4780,7 @@ abstract: 54
 irrational: 54
 interpreted: 54
 gamma: 54
+ch: 54
 canadiens: 54
 launches: 54
 hernlem: 53
@@ -4840,7 +4840,6 @@ baerga: 53
 wales: 53
 uuencode: 53
 suns: 53
-ch: 53
 generator: 53
 wc: 53
 habs: 53
@@ -5355,6 +5354,7 @@ leagues: 46
 higgins: 46
 manitoba: 46
 jurisdiction: 46
+oo: 46
 singapore: 46
 slip: 46
 throttle: 46
@@ -5719,7 +5719,6 @@ institutions: 42
 helmets: 42
 motors: 42
 daryl: 42
-oo: 42
 fluid: 42
 sutherland: 42
 wade: 42
@@ -5995,7 +5994,6 @@ oto: 40
 brave: 39
 guday: 39
 um: 39
-^^^: 39
 employed: 39
 communicate: 39
 axes: 39
@@ -6487,6 +6485,7 @@ thoroughly: 35
 abolish: 35
 dinner: 35
 copied: 35
+vi: 35
 ireland: 35
 traditions: 35
 cbc: 35
@@ -6878,7 +6877,6 @@ beleive: 32
 freenet: 32
 medication: 32
 impose: 32
-vi: 32
 kicking: 32
 chairman: 32
 portions: 32
@@ -7536,7 +7534,6 @@ enjoyed: 28
 ear: 28
 harsh: 28
 guts: 28
-^^^^^: 28
 hizbollah: 28
 commented: 28
 chooses: 28
@@ -7697,7 +7694,6 @@ esin: 27
 bernard: 27
 struggling: 27
 fortune: 27
-^^^^^^^^^^^^^^^: 27
 serbian: 27
 rolled: 27
 intact: 27
@@ -7790,7 +7786,6 @@ admin: 27
 alignment: 27
 lotus: 27
 unlawful: 27
-^^^^: 27
 archer: 27
 criticize: 27
 runners: 27
@@ -8529,7 +8524,6 @@ cordially: 24
 pythagorean: 24
 brook: 24
 rauser: 24
-^^^^^^: 24
 freaks: 24
 blaster: 24
 updating: 24
@@ -9268,7 +9262,6 @@ commercially: 21
 tex: 21
 discarded: 21
 rusnews: 21
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 21
 preaching: 21
 bothering: 21
 mysteries: 21
@@ -9522,7 +9515,6 @@ omaha: 20
 unmoderated: 20
 cake: 20
 cochran: 20
-^^^^^^^^^: 20
 jumping: 20
 multisync: 20
 hypothetical: 20
@@ -10119,7 +10111,6 @@ headlights: 18
 hideous: 18
 terrain: 18
 enabled: 18
-^^^^^^^^: 18
 executing: 18
 drivel: 18
 supportive: 18
@@ -10409,7 +10400,6 @@ arf: 17
 heartless: 17
 boycott: 17
 virginias: 17
-^^^^^^^^^^^^^^^^^^: 17
 reluctant: 17
 disarming: 17
 compensate: 17
@@ -10880,7 +10870,6 @@ interfering: 16
 prohibits: 16
 numbered: 16
 behold: 16
-^^^^^^^^^^^: 16
 duncan: 16
 debatable: 16
 ponder: 16
@@ -11172,6 +11161,7 @@ wcl: 16
 mainwinwin: 16
 ata: 16
 xxxxx: 16
+sx: 16
 shareof: 16
 indented: 16
 $wcc: 16
@@ -11404,7 +11394,6 @@ lui: 15
 squeeze: 15
 asbestos: 15
 rites: 15
-^^: 15
 exceptional: 15
 moe: 15
 cautious: 15
@@ -12372,7 +12361,6 @@ appended: 13
 analyzed: 13
 banner: 13
 undo: 13
-^c: 13
 immense: 13
 emphasized: 13
 camels: 13
@@ -12420,7 +12408,6 @@ armond: 13
 ingres: 13
 induce: 13
 vaguely: 13
-^^^^^^^^^^^^^^: 13
 indicators: 13
 hazards: 13
 roberto: 13
@@ -12602,6 +12589,7 @@ cfs: 13
 geology: 13
 pcf: 13
 workspaces: 13
+pe: 13
 actix: 13
 rg: 13
 aliases: 13
@@ -12798,7 +12786,6 @@ apacgw: 13
 enlightened: 12
 numbering: 12
 eighty: 12
-^^^^^^^: 12
 deprive: 12
 credence: 12
 donot: 12
@@ -13236,7 +13223,6 @@ landmann: 12
 santo: 12
 burlington: 12
 cruxprincetonedu: 12
-^d: 12
 clippers: 12
 soup: 12
 cg: 12
@@ -13255,7 +13241,6 @@ peach: 12
 vb: 12
 unx: 12
 lib: 12
-pe: 12
 grp: 12
 svein: 12
 initiating: 12
@@ -15422,7 +15407,6 @@ gestapo: 9
 disrupt: 9
 fete: 9
 fetched: 9
-^^^^^^^^^^: 9
 maler: 9
 consul: 9
 reread: 9
@@ -15686,7 +15670,6 @@ rebel: 9
 eeprom: 9
 eastwood: 9
 ranked: 9
-^^^^^^^^^^^^^^^^^^^^^^^: 9
 attachment: 9
 pam: 9
 callable: 9
@@ -15918,6 +15901,7 @@ cochrane: 9
 oscar: 9
 butch: 9
 fester: 9
+zz: 9
 recordings: 9
 eastman: 9
 shirley: 9
@@ -16236,7 +16220,6 @@ eaton: 9
 balloons: 9
 imbalance: 9
 perfection: 9
-^^^^^^^^^^^^^^^^^^^^^: 9
 reformers: 9
 icbm: 9
 moseley: 9
@@ -16347,7 +16330,6 @@ shapleigh: 9
 stun: 9
 eccentricity: 9
 sks: 9
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 9
 worshiper: 9
 unequivocally: 9
 swastika: 9
@@ -16407,7 +16389,6 @@ straightened: 8
 deposition: 8
 ernest: 8
 armature: 8
-^^^^^^^^^^^^^^^^^^^^: 8
 yasser: 8
 yossi: 8
 consistantly: 8
@@ -16801,6 +16782,7 @@ toe: 8
 shear: 8
 quart: 8
 sergei: 8
+hh: 8
 wil: 8
 gsx: 8
 funky: 8
@@ -16826,7 +16808,6 @@ qualifier: 8
 austintx: 8
 yknow: 8
 axel: 8
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 8
 wilbur: 8
 stink: 8
 macrae: 8
@@ -17342,7 +17323,6 @@ approving: 8
 gibberish: 8
 allready: 8
 stunt: 8
-^^^^^^^^^^^^^^^^: 8
 adversaries: 8
 sams: 8
 busting: 8
@@ -17581,7 +17561,6 @@ manipulator: 8
 xtmalloc: 8
 xtappaddinput: 8
 timeouts: 8
-s^x: 8
 opengl: 8
 ruleyear: 8
 maxbuildsize: 8
@@ -17621,7 +17600,6 @@ oeinck: 8
 intersect: 8
 aspi: 8
 asad: 8
-sx: 8
 cms: 8
 forte: 8
 jumpered: 8
@@ -17752,7 +17730,6 @@ turgut: 7
 laird: 7
 leftists: 7
 zion: 7
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 7
 begining: 7
 slogans: 7
 overwhelmed: 7
@@ -18113,7 +18090,6 @@ feingold: 7
 volleyball: 7
 steves: 7
 sob: 7
-^^^^^^^^^^^^^: 7
 innate: 7
 fide: 7
 lam: 7
@@ -18214,13 +18190,11 @@ cornering: 7
 misnomer: 7
 accomplishing: 7
 scratching: 7
-^^^^^^^^^^^^^^^^^^^: 7
 codex: 7
 akron: 7
 thermostat: 7
 aesthetic: 7
 optimist: 7
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 7
 om: 7
 sluggish: 7
 robbers: 7
@@ -20272,7 +20246,6 @@ mystics: 6
 consolation: 6
 equivalence: 6
 qualifying: 6
-^^^^^^^^^^^^^^^^^^^^^^^^: 6
 essays: 6
 misjudged: 6
 operatives: 6
@@ -20361,7 +20334,6 @@ gonzales: 6
 gaj: 6
 baergas: 6
 t&p: 6
-^x: 6
 alphabetical: 6
 fashionable: 6
 griffey: 6
@@ -20843,7 +20815,6 @@ claussen: 6
 morkunas: 6
 stimulated: 6
 erratic: 6
-zz: 6
 goldberg: 6
 dhhs: 6
 attainment: 6
@@ -20996,7 +20967,6 @@ bledsoe: 6
 unprovable: 6
 pelliccio: 6
 primitives: 6
-^^^^^^^^^^^^^^^^^^^^^^^^^^: 6
 avoidance: 6
 sizing: 6
 outlining: 6
@@ -21378,7 +21348,7 @@ hargreaves: 6
 alastair: 6
 dedication: 6
 segard: 6
-pa^ques: 6
+paques: 6
 heb: 6
 butera: 6
 catholicism: 6
@@ -21435,7 +21405,6 @@ livelihood: 5
 pharaohs: 5
 retaliate: 5
 terretories: 5
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 5
 loyalties: 5
 detonate: 5
 mercenaries: 5
@@ -21922,7 +21891,6 @@ conditioners: 5
 squash: 5
 reformatory: 5
 inmates: 5
-b^: 5
 gripes: 5
 binder: 5
 spokes: 5
@@ -22005,7 +21973,6 @@ gk: 5
 stylus: 5
 mirage: 5
 ronaldjdeblockjr: 5
-^^^^^^^^^^^^^^^^^^^^^^^^^: 5
 renault: 5
 kuala: 5
 lumpur: 5
@@ -22043,8 +22010,6 @@ declutch: 5
 unsuitable: 5
 soliciting: 5
 exotics: 5
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 5
-hh: 5
 deterring: 5
 impede: 5
 stalls: 5
@@ -24116,7 +24081,7 @@ opposites: 5
 yhwh: 5
 intentionality: 5
 unpreparedness: 4
-#$^&&: 4
+#$&&: 4
 cetin: 4
 kaya: 4
 adressed: 4
@@ -24685,7 +24650,6 @@ mitteilungsblatt: 4
 dudes: 4
 scottish: 4
 merchant: 4
-^^^^^^^^^^^^: 4
 occassions: 4
 neu: 4
 tackling: 4
@@ -25556,7 +25520,7 @@ clemente: 4
 mouthing: 4
 reeve: 4
 stiffness: 4
-^q: 4
+zzzzzz: 4
 devon: 4
 greatful: 4
 keplerunhedu: 4
@@ -25754,6 +25718,7 @@ xp: 4
 ttfonts: 4
 weidlich: 4
 hx: 4
+wx: 4
 windowssystemvgalogorle: 4
 windowssystemvgalogolgo: 4
 progman: 4
@@ -26383,8 +26348,8 @@ ibmers: 4
 resolves: 4
 elektronik: 4
 ivi0: 4
-pn^rnpn: 4
-cn^rn: 4
+pnrnpn: 4
+cnrn: 4
 invents: 4
 fetching: 4
 julius: 4
@@ -26810,7 +26775,6 @@ hindenburg: 4
 martina: 4
 divisive: 4
 instrumental: 4
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 4
 arround: 4
 hikes: 4
 eyeglasses: 4
@@ -26912,7 +26876,6 @@ teneo: 4
 tuus: 4
 intervallum: 4
 cuurrently: 4
-o^o: 4
 nmmsubject: 4
 nolo: 4
 confounding: 4
@@ -27880,6 +27843,7 @@ spectrograph: 4
 reconnaissance: 4
 nssdc: 4
 $off: 4
+$letter: 4
 booms: 4
 rui: 4
 spacecause: 4
@@ -28038,7 +28002,6 @@ whuzzat: 4
 empowers: 4
 nabeel: 4
 socreligionislamahmadiyya: 4
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 4
 preachers: 4
 nibleys: 4
 singularity: 4
@@ -28800,7 +28763,6 @@ weeps: 3
 acheived: 3
 wield: 3
 ignorants: 3
-^^^^^^^^^^^^^^^^^^^^^^: 3
 recruited: 3
 isqat: 3
 narcotics: 3
@@ -29839,8 +29801,6 @@ proficient: 3
 flocking: 3
 pronoun: 3
 tangents: 3
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 3
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 3
 madalyn: 3
 burdens: 3
 hussien: 3
@@ -30017,19 +29977,10 @@ jerald: 3
 gallego: 3
 ect: 3
 usrlocalrnorganization: 3
-opiini^h^h: 3
-^h^h: 3
+opiinihh: 3
 quitbye: 3
 ctrlaltdel: 3
 savequit: 3
-^zz: 3
-^zzzzzz: 3
-^vi: 3
-^l: 3
-^#: 3
-^e: 3
-^i: 3
-^t: 3
 helpquit: 3
 ctrlshftdel: 3
 oftenvery: 3
@@ -30628,7 +30579,6 @@ sweeney: 3
 holik: 3
 kbrown: 3
 krygier: 3
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 3
 tdarling: 3
 facthq: 3
 vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv: 3
@@ -30858,7 +30808,6 @@ lindberg: 3
 jiri: 3
 plural: 3
 leauge: 3
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 3
 salming: 3
 sjodin: 3
 cgy: 3
@@ -31936,7 +31885,6 @@ airfields: 3
 caves: 3
 rivero: 3
 subsets: 3
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 3
 dialectical: 3
 materialism: 3
 janis: 3
@@ -32028,7 +31976,6 @@ antones: 3
 garlicsbscom: 3
 thhhppptt: 3
 retardent: 3
-^^^^^^^^^^^^^^^^^: 3
 brainless: 3
 clod: 3
 panache: 3
@@ -32110,7 +32057,6 @@ pithy: 3
 fearn: 3
 antifreezecoolant: 3
 odo: 3
-^^^^^^^^^^^^^^^^^^^^^^^^^^^: 3
 enrique: 3
 cagiva: 3
 strapping: 3
@@ -32468,7 +32414,6 @@ hpwindows: 3
 ttinsert: 3
 +bump: 3
 tt+: 3
-^g: 3
 mathur: 3
 dvprakash: 3
 prakash: 3
@@ -32710,7 +32655,6 @@ wiggle: 3
 pcxdbfand: 3
 photostyler: 3
 colinear: 3
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 3
 vaporized: 3
 cartoons: 3
 blockiness: 3
@@ -32915,7 +32859,6 @@ rot: 3
 syndicated: 3
 dems: 3
 nssdcagsfcnasagov: 3
-wx: 3
 vpl: 3
 trackers: 3
 stardent: 3
@@ -33284,7 +33227,6 @@ belch: 3
 hic: 3
 nuclei: 3
 thinner: 3
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 3
 obliteration: 3
 rotc: 3
 fend: 3
@@ -33587,7 +33529,6 @@ scintillation: 3
 extraterrestrial: 3
 $key: 3
 foreach: 3
-$letter: 3
 $acro: 3
 length$prefix: 3
 localw: 3
@@ -34591,7 +34532,6 @@ disingeneous: 2
 mrder: 2
 hideout: 2
 retalliation: 2
-^^^^^^^muslim: 2
 christan: 2
 samaria: 2
 terpetrosyan: 2
@@ -35192,7 +35132,6 @@ feygin: 2
 shoa: 2
 tricked: 2
 funnel: 2
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 2
 tyoe: 2
 blends: 2
 resistrance: 2
@@ -35314,7 +35253,6 @@ mias: 2
 clandestine: 2
 deta: 2
 masterminds: 2
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 2
 asume: 2
 abrogate: 2
 instilled: 2
@@ -35754,7 +35692,6 @@ stubid: 2
 baz: 2
 bletch: 2
 resending: 2
-^from: 2
 ascom: 2
 hasler: 2
 ringer: 2
@@ -36919,7 +36856,7 @@ devour: 2
 ptolemic: 2
 orbitting: 2
 liberate: 2
-oil^h^h^hkuwait: 2
+oilhhhkuwait: 2
 devious: 2
 misidentified: 2
 wimped: 2
@@ -37675,14 +37612,11 @@ whitchurch: 2
 deselect: 2
 winfileini: 2
 0s: 2
-^s: 2
-o^: 2
 $x: 2
 0n: 2
 jq: 2
 &#zkefk0: 2
 ynu: 2
-m^: 2
 d00: 2
 windowsapps: 2
 solitaire: 2
@@ -37694,6 +37628,7 @@ ardeystr: 2
 koennten: 2
 eben: 2
 erledigen: 2
+$e: 2
 #$: 2
 fileman: 2
 rowe: 2
@@ -39754,7 +39689,6 @@ resurgence: 2
 diagnosing: 2
 raycjender: 2
 renniger: 2
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 2
 #################: 2
 ########################: 2
 pittsbugh: 2
@@ -41603,6 +41537,7 @@ dlopen: 2
 deloura: 2
 techware: 2
 landauwaiting: 2
+foregroundbackground: 2
 mathcomputer: 2
 netter: 2
 popupcmap: 2
@@ -44814,7 +44749,6 @@ vafb: 2
 vrm: 2
 wsmr: 2
 $threshold: 2
-^a: 2
 $acro$key: 2
 $&: 2
 vec$w$word: 2
@@ -46162,10 +46096,8 @@ irreconcilable: 2
 ledge: 2
 mangling: 2
 terraces: 2
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 2
 qualifiers: 2
 abingdon: 2
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 2
 therevs: 2
 napier: 2
 ciansc: 2
@@ -46241,7 +46173,6 @@ bork: 2
 ecclesisatical: 2
 backtrack: 2
 duratation: 2
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 2
 prasaktanam: 2
 cetasam: 2
 buddhih: 2
@@ -48646,7 +48577,6 @@ vasilu: 1
 nicos: 1
 bloodless: 1
 doest: 1
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 1
 adminis: 1
 tration: 1
 inaugurated: 1
@@ -49301,7 +49231,6 @@ recautoscr: 1
 thorsteinsson: 1
 raunvishiis: 1
 whatching: 1
-guys^: 1
 koni: 1
 sesh: 1
 paniniwatsonibmcom: 1
@@ -49522,7 +49451,7 @@ drivingmaintenance: 1
 transaxle: 1
 humorimpaired: 1
 skipto: 1
-^h^h^h^h^h^h: 1
+hhhhhh: 1
 bricklins: 1
 hemmings: 1
 collegenextmail: 1
@@ -49589,8 +49518,7 @@ harpal: 1
 chohan: 1
 includehomenewweltymiscautosschoollist: 1
 usrlocaladmbinexplscript: 1
-^reply: 1
-^senderd: 1
+senderd: 1
 usrlibsendmail: 1
 excises: 1
 digestification: 1
@@ -50601,11 +50529,11 @@ kaneda: 1
 atz0: 1
 at&d0: 1
 at&w: 1
-at&z0^m: 1
+at&z0m: 1
 insures: 1
 macwoof: 1
-at&d0^m: 1
-at&z0&d0^m: 1
+at&d0m: 1
+at&z0&d0m: 1
 commmand: 1
 z0: 1
 &d0: 1
@@ -50794,7 +50722,6 @@ dch: 1
 magnavoxs: 1
 flabby: 1
 airwolf: 1
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 1
 passethrough: 1
 worths: 1
 shamu: 1
@@ -51024,7 +50951,7 @@ ramcheck: 1
 josephabrownlee: 1
 ith: 1
 offa: 1
-&^&&^#: 1
+&&&#: 1
 daeronmcrcimmcgilledu: 1
 problemis: 1
 appleyard: 1
@@ -52142,7 +52069,7 @@ repsonses: 1
 gentility: 1
 tenacity: 1
 maim: 1
-oil^h^h^hlives: 1
+oilhhhlives: 1
 surrendering: 1
 rummage: 1
 vigilantism: 1
@@ -52196,8 +52123,6 @@ mindbrain: 1
 notbelievegods: 1
 believenotgods: 1
 swayed: 1
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 1
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 1
 syn: 1
 whoes: 1
 partents: 1
@@ -53971,9 +53896,8 @@ qdh: 1
 xto: 1
 $usg$: 1
 mwhwch: 1
-0^j: 1
+0j: 1
 $o#a: 1
-^j: 1
 mngf: 1
 x&gj: 1
 snj: 1
@@ -53982,7 +53906,7 @@ xs0isi: 1
 n0bvw: 1
 vicy: 1
 #vy: 1
-t^sj: 1
+tsj: 1
 xygc: 1
 xveg: 1
 ++n: 1
@@ -53993,16 +53917,16 @@ cew: 1
 gk+y+m$z#: 1
 mqv: 1
 mouq: 1
-^kup: 1
+kup: 1
 sdt&w$ny$tsk#s: 1
-t^ou: 1
+tou: 1
 +pv: 1
-^n+h: 1
+n+h: 1
 mqe: 1
 ak$hei: 1
 jom: 1
 m$izf: 1
-buhby0wgx^kk: 1
+buhby0wgxkk: 1
 kqd: 1
 kcs: 1
 kyww: 1
@@ -54010,7 +53934,7 @@ rj#: 1
 bqt0: 1
 n0za#ss: 1
 d&jdah: 1
-mhnl+^: 1
+mhnl+: 1
 dtf: 1
 epx: 1
 qzcx: 1
@@ -54027,14 +53951,14 @@ yjn+d: 1
 #kg: 1
 vbvrqd: 1
 ecaj&: 1
-thwh0^t&gh: 1
+thwh0t&gh: 1
 &&+ef&: 1
 px&: 1
 #z00m+y$: 1
 m#c: 1
 h$jmn: 1
 mww: 1
-^0dq: 1
+0dq: 1
 ghqg&qttexd: 1
 $c: 1
 y#0x: 1
@@ -54065,7 +53989,7 @@ gt0: 1
 vz: 1
 #i#c: 1
 r#+cz: 1
-g^&#mao: 1
+g&#mao: 1
 mrre: 1
 #v: 1
 v0l: 1
@@ -54096,7 +54020,6 @@ pajvlf: 1
 &ar: 1
 z0#: 1
 me0h: 1
-^n: 1
 mpr0c: 1
 bxr: 1
 $#f: 1
@@ -54114,11 +54037,11 @@ jy: 1
 icm: 1
 fz: 1
 lcwg: 1
-d0$yrg0o0r^#r: 1
+d0$yrg0o0r#r: 1
 mzg: 1
 dlnw0: 1
 #vt: 1
-h^#+: 1
+h#+: 1
 mzv: 1
 pxz: 1
 l&: 1
@@ -54130,21 +54053,18 @@ i0d: 1
 aoia: 1
 olt#: 1
 a#+wabph: 1
-0^: 1
 m&: 1
 leb: 1
 b0yabl&: 1
-^hikci: 1
+hikci: 1
 idhnabue: 1
 jh#lzgk: 1
-$^e: 1
 wrgr: 1
-^qlt: 1
-esge0^xsa0cvydjzs: 1
+qlt: 1
+esge0xsa0cvydjzs: 1
 qpb$t: 1
-y^: 1
 lmf: 1
-wvb^0nhr^j: 1
+wvb0nhrj: 1
 wht: 1
 bfp: 1
 t&: 1
@@ -54153,7 +54073,6 @@ i0zde: 1
 q0: 1
 0ej&$er##: 1
 mmp$: 1
-w^x: 1
 #mp$: 1
 winlogozip: 1
 imbeded: 1
@@ -54228,7 +54147,7 @@ kiri: 1
 z#f$h0: 1
 cnpp: 1
 bqy+yam: 1
-&^f: 1
+&f: 1
 sepsvlstcbhpp: 1
 fbx: 1
 #z: 1
@@ -54258,9 +54177,9 @@ iv#rzr: 1
 znl+dx: 1
 m&vg: 1
 pyrav: 1
-qbtr#0s^: 1
+qbtr#0s: 1
 j$x#fb: 1
-#pqjq^z: 1
+#pqjqz: 1
 lbv: 1
 rtwh: 1
 ld&: 1
@@ -54292,10 +54211,10 @@ ltvjbxl: 1
 ie#ud: 1
 hxi: 1
 &brb: 1
-uy#m^pkiwwb: 1
+uy#mpkiwwb: 1
 m0r: 1
 krisd+#: 1
-s^cb: 1
+scb: 1
 $&xsqc: 1
 +#px: 1
 v&: 1
@@ -54320,9 +54239,8 @@ mvdnqtn: 1
 0#: 1
 s#p#xoq: 1
 &ebc: 1
-c^h: 1
 mkqvnx$: 1
-m$z#x^z: 1
+m$z#xz: 1
 0kapt&: 1
 zqvo: 1
 izo: 1
@@ -54987,7 +54905,7 @@ sbp0d: 1
 &p: 1
 m#$0: 1
 0p: 1
-zut^: 1
+zut: 1
 &#g: 1
 m+&#: 1
 xi$: 1
@@ -54998,14 +54916,14 @@ jljpk: 1
 jljr+hnl: 1
 mjpo: 1
 emu#$qu#$qj#: 1
-m^o^s^pk: 1
-jo+pkpolw^wc^o^o^s^n^no: 1
+mospk: 1
+jo+pkpolwwcoosnno: 1
 #0t0: 1
 jk+qjkr: 1
 &gjrlk: 1
 0te: 1
 $#ao+ro+ro+ro: 1
-&u^&o+ro+ro+ro+ro: 1
+&u&o+ro+ro+ro+ro: 1
 jljrlkrlkrlkflks: 1
 mgf+krlknlk: 1
 vs$+rt0d: 1
@@ -55015,7 +54933,7 @@ $+: 1
 dro+ro+ro: 1
 lq+ro+: 1
 mrns: 1
-m^c+: 1
+mc+: 1
 #0tt$t: 1
 xd: 1
 p$l: 1
@@ -55029,31 +54947,29 @@ d0d+ro+: 1
 mrw: 1
 $o+ro+$s: 1
 pro+ro+: 1
-m$r0d0d#^: 1
+m$r0d0d#: 1
 s+p: 1
 zsrx: 1
 ikrx: 1
 el0d0d0el0d0d: 1
 d0dt: 1
-^#p#: 1
+#p#: 1
 el&ql: 1
 tv#: 1
 r0dft&p0d0d: 1
 dgt&: 1
-el&ql0d^: 1
+el&ql0d: 1
 ttubor: 1
-s^: 1
-p^: 1
 tts0t: 1
 t0$: 1
-tt^$hp: 1
+tt$hp: 1
 #0ts0g: 1
 0$: 1
 gxg: 1
 mrg: 1
 trt#0grgrgx: 1
-p&gocx^$h: 1
-nokz^o: 1
+p&gocx$h: 1
+nokzo: 1
 hkro: 1
 nok0&: 1
 hk+po: 1
@@ -55465,7 +55381,6 @@ sleeper: 1
 choked: 1
 sonapsis: 1
 waht: 1
-zzzzzz: 1
 skeds: 1
 antigretz: 1
 ptsgame: 1
@@ -55757,7 +55672,6 @@ klaty: 1
 atchafalayaenginumichedu: 1
 tapp: 1
 vadnais: 1
-^o: 1
 mcgarver: 1
 crisiumastroubcca: 1
 biter: 1
@@ -56944,10 +56858,10 @@ irreducible: 1
 pasnuw: 1
 l$+u$: 1
 mqa$+j&: 1
-^pj0h+: 1
+pj0h+: 1
 tjw: 1
 &t: 1
-#rd^vqf: 1
+#rdvqf: 1
 vk: 1
 hisherundefined: 1
 shadwell: 1
@@ -57942,9 +57856,7 @@ divisibility: 1
 cryptographers: 1
 quadruples: 1
 pqed: 1
-p^e: 1
 dkc: 1
-c^d: 1
 isisnt: 1
 hendrik: 1
 breakeven: 1
@@ -58048,8 +57960,8 @@ langage: 1
 epnpn: 1
 dcn: 1
 c0: 1
-ep0^ivp0: 1
-dc0^iv: 1
+ep0ivp0: 1
+dc0iv: 1
 plaincipher: 1
 forthright: 1
 prerogative: 1
@@ -59284,7 +59196,6 @@ electrolytes: 1
 hemoglobin: 1
 spirochete: 1
 considine: 1
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 1
 burzynkis: 1
 shrinkage: 1
 necrosis: 1
@@ -60767,7 +60678,6 @@ exactely: 1
 haaahaaaahaaaa: 1
 fdafbideabatf: 1
 ftm: 1
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 1
 survailance: 1
 furher: 1
 guenther: 1
@@ -61928,7 +61838,7 @@ mudslides: 1
 noisehuh: 1
 iand: 1
 lotta: 1
-&^$^&: 1
+&$&: 1
 dismounted: 1
 swagger: 1
 lidded: 1
@@ -62542,7 +62452,6 @@ gs###: 1
 stator: 1
 cb###: 1
 handlbars: 1
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 1
 whaz: 1
 polen: 1
 thoughout: 1
@@ -62889,7 +62798,6 @@ imparement: 1
 legless: 1
 infantewrites: 1
 goudas: 1
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: 1
 hahahahahaahahha: 1
 whahwuhuhahuah: 1
 bdis: 1
@@ -63413,7 +63321,7 @@ disclaimerpackage: 1
 deccf: 1
 osfdef: 1
 superclasss: 1
-p^#jp#: 1
+p#jp#: 1
 xallocnamedcolor: 1
 hintstips: 1
 halldept: 1
@@ -63574,7 +63482,6 @@ kbaud: 1
 #over: 1
 #function: 1
 #redraws: 1
-foreground^background: 1
 modelcolormap: 1
 spectacularly: 1
 wronghow: 1
@@ -63777,7 +63684,7 @@ icondoit: 1
 xtniconifypixmap: 1
 pixure: 1
 thnsks: 1
-$cwd^g: 1
+$cwdg: 1
 dimatrix: 1
 hovedgade: 1
 uunetdimatrixdkleon: 1
@@ -63884,7 +63791,6 @@ iconifyexpand: 1
 grymoirecrdgecom: 1
 manipluating: 1
 $hostname: 1
-$e: 1
 variablesdevtty: 1
 phne: 1
 glassuni: 1
@@ -63997,7 +63903,6 @@ mitel: 1
 createeditview: 1
 uimss: 1
 gnuemacshelp: 1
-^xterm: 1
 getenv: 1
 defvar: 1
 fset: 1
@@ -64750,7 +64655,6 @@ xselectinputthedisplaythewindowexposuremaskbuttonpressmask: 1
 xmapwindowthedisplaythewindow: 1
 xnexteventthedisplay&theevent: 1
 theeventtype: 1
-foregroundbackground: 1
 thegcvaluesforegroundblackpixelthedisplaythescreen: 1
 thegcvaluesbackgroundwhitepixelthedisplaythescreen: 1
 thegc: 1
@@ -65521,7 +65425,6 @@ gismitedu: 1
 lefflers: 1
 newcd: 1
 subshell: 1
-^v: 1
 ctlseqsms: 1
 mithardcopyclientsctlseqspsz: 1
 cr&d: 1
@@ -66605,7 +66508,6 @@ jupitercsdunbca: 1
 jupitercsdunbedu: 1
 publibraryinfo: 1
 chay: 1
-&^^: 1
 drw: 1
 alphachannel: 1
 terrychay: 1
@@ -68998,7 +68900,7 @@ goig: 1
 beyound: 1
 especialy: 1
 xlrs: 1
-sh#$&^t: 1
+sh#$&t: 1
 schadow: 1
 faraday: 1
 aartolsen: 1
@@ -69454,7 +69356,7 @@ amds: 1
 mailserversoonutopia: 1
 lifeandor: 1
 keychains: 1
-geeks^h^h^h^h^h^h: 1
+geekshhhhhh: 1
 mdgoodma: 1
 apg: 1
 canoga: 1
@@ -72321,15 +72223,14 @@ yso: 1
 zs+: 1
 splitw+$: 1
 $off++: 1
-^$letter: 1
 usrdictwords: 1
 acro: 1
 ++$off: 1
 local$letter: 1
 $i: 1
 index$key$prefix: 1
-^$prefixi: 1
-s^$prefix$prefixi: 1
+$prefixi: 1
+s$prefix$prefixi: 1
 elsif: 1
 ul$word: 1
 moo: 1
@@ -72521,7 +72422,6 @@ boding: 1
 conjugation: 1
 tailfins: 1
 prine: 1
-o^^: 1
 cotuca: 1
 colegio: 1
 tecnico: 1
@@ -75074,7 +74974,6 @@ slaveowner: 1
 emancipated: 1
 immmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm: 1
 hmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm: 1
-day^^^^^^: 1
 cephas: 1
 untimely: 1
 sedet: 1
@@ -76875,7 +76774,6 @@ brogley: 1
 yellowish: 1
 milkyway: 1
 toowhit: 1
-^not: 1
 dresnok: 1
 thelonious: 1
 templeforsale: 1
@@ -77797,7 +77695,6 @@ zuck: 1
 laydon: 1
 dunelow: 1
 apagchwie: 1
-^^^above: 1
 hewent: 1
 deathso: 1
 rethe: 1

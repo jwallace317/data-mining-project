@@ -66,6 +66,14 @@ def main():
 
     token_frequency_sorted = sorted(
         token_frequency.items(), key=lambda x: x[1], reverse=True)
+    token_frequency_pruned = token_frequency_sorted[0:constants.PRUNED_SIZE]
+    token_dictionary_pruned = {}
+    count = 0
+    for token, frequency in token_frequency_pruned:
+        token_dictionary_pruned[token] = count
+        count += 1
+
+    print(f'token dictionary pruned size: { len(token_dictionary_pruned) }')
     with open('token_dictionary.txt', 'w') as f:
         for token, id in token_dictionary.items():
             f.write(f'{ token }: { id }\n')
@@ -74,12 +82,17 @@ def main():
         for token, count in token_frequency_sorted:
             f.write(f'{ token }: { count }\n')
 
+    with open('token_frequency_pruned.txt', 'w') as f:
+        for token, count in token_frequency_sorted[0:constants.PRUNED_SIZE]:
+            f.write(f'{ token }: { count }\n')
+
     print(f'total number of files: { file_count }')
     print(f'number of tokens: { token_count }')
     print(f'number of distinct words: { id_count }')
 
     # create feature matrix with proper dimensions
     features = np.zeros((file_count, id_count))
+    features_pruned = np.zeros((file_count, constants.PRUNED_SIZE))
 
     # create the target vector with proper dimensions
     targets = np.zeros((file_count, 1))
@@ -112,14 +125,23 @@ def main():
                         # insert into feature matrix
                         features[file_count, token_dictionary[token]] += 1
 
+                        if token in token_dictionary_pruned:
+                            features_pruned[file_count,
+                                            token_dictionary_pruned[token]] += 1
+
             # populate the target vector
             targets[file_count, 0] = topic_id
 
             file_count += 1
         topic_id += 1
 
-    print(f'features={ features[1, 1:100] }')
-    print(f'target vector = { targets[1:100, 0] }')
+    print(f'feature matrix shape = { features.shape }')
+    print(f'feature matrix = { features[1, 1:100] }\n')
+    print(f'pruned feature matrix shape = { features_pruned.shape }')
+    print(f'pruned feature matrix ={ features_pruned[1, 1:100] }\n')
+    print(f'target vector shape = { targets.shape }')
+    print(f'target vector = { targets[1:100, 0] }\n')
+
     return 0
 
 
