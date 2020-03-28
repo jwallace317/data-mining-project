@@ -5,8 +5,8 @@ Utility Methods Module
 # import necessary modules
 import os
 import re
-import constants
 import numpy as np
+import constants
 
 
 def preprocess(token):
@@ -85,17 +85,18 @@ def create_token_id_dictionary(path):
                     token_frequency[token] += 1
 
     print('writing token id dictionary to file...')
-    with open('token_id_dictionary.txt', 'w') as f:
-        f.write('token id dictionary')
-        f.write(f'total number of documents tokenized: { document_count }\n')
-        f.write(f'total number of distinct tokens: { id_count }\n')
+    with open('token_id_dictionary.txt', 'w') as file:
+        file.write('token id dictionary')
+        file.write(
+            f'total number of documents tokenized: { document_count }\n')
+        file.write(f'total number of distinct tokens: { id_count }\n')
         for token, id_count in token_id_dictionary.items():
-            f.write(f'{ token }: { id_count }\n')
+            file.write(f'{ token }: { id_count }\n')
 
     return document_count, token_id_dictionary, token_frequency
 
 
-def prune_token_id_dictionary(token_id_dictionary, token_frequency, max_tokens):
+def prune_token_id_dictionary(token_frequency, max_tokens):
     """
     Prune Token Id Dictionary
 
@@ -120,10 +121,10 @@ def prune_token_id_dictionary(token_id_dictionary, token_frequency, max_tokens):
         count += 1
 
     print('writing token frequency dictionary to file...')
-    with open('token_frequency_dictionary.txt', 'w') as f:
-        f.write('token frequency dictionary')
+    with open('token_frequency_dictionary.txt', 'w') as file:
+        file.write('token frequency dictionary')
         for token, frequency in token_frequency_sorted:
-            f.write(f'{ token }: { frequency }\n')
+            file.write(f'{ token }: { frequency }\n')
 
     return pruned_token_id_dictionary
 
@@ -167,7 +168,7 @@ def create_feature_matrix(path, document_count, token_id_dictionary):
     return feature_matrix
 
 
-def create_pruned_feature_matrix(path, document_count, token_id_dictionary, token_frequency, pruned_size):
+def create_pruned_feature_matrix(path, document_count, token_frequency, pruned_size):
     """
     Create Pruned Feature Matrix
 
@@ -181,7 +182,6 @@ def create_pruned_feature_matrix(path, document_count, token_id_dictionary, toke
 
     print('create pruned token id dictionary...')
     pruned_token_id_dictionary = prune_token_id_dictionary(
-        token_id_dictionary,
         token_frequency,
         pruned_size)
 

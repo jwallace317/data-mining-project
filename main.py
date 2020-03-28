@@ -3,13 +3,9 @@ Main Module
 """
 
 # import necessary modules
-import os
-import re
 import sys
 import time
-import numpy as np
 import constants
-from kmeans import Kmeans
 import utils
 
 
@@ -51,7 +47,6 @@ def main():
     pruned_feature_matrix = utils.create_pruned_feature_matrix(
         constants.DATASET_RELATIVE_PATH,
         document_count,
-        token_id_dictionary,
         token_frequency,
         constants.PRUNED_SIZE)
 
