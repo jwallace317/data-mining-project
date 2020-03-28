@@ -5,33 +5,11 @@ Main Module
 # import necessary modules
 import os
 import re
+import sys
 import numpy as np
 import constants
 from kmeans import Kmeans
 import utils
-
-
-def preprocess(token):
-    """
-    preprocess token
-    """
-
-    token = token.lower()
-
-    for character in token:
-        if character == '@' or character in constants.NUMBERS:
-            return ['!']  # do not use token
-
-        if character in constants.DELIMITERS:
-            token = token.replace(character, '')
-
-    tokens = []
-    if '\n' in token or '-' in token:
-        tokens = re.split('[\n-]', token)
-    else:
-        tokens.append(token)
-
-    return tokens
 
 
 # task main
@@ -41,12 +19,39 @@ def main():
     """
 
     # create unique token id dictionary
-    token_id_dictionary = utils.create_token_id_dictionary(
+    document_count, token_id_dictionary, token_frequency = utils.create_token_id_dictionary(
         constants.DATASET_RELATIVE_PATH)
 
     # create feature matrix
+    feature_matrix = utils.create_feature_matrix(
+        constants.DATASET_RELATIVE_PATH,
+        document_count,
+        token_id_dictionary)
+
+    feature_matrix_size = sys.getsizeof(feature_matrix)
+    print(feature_matrix[0:100, 0])
+    print(f'feature matrix size: { feature_matrix_size }')
 
     # create pruned feature matrix
+    pruned_feature_matrix = utils.create_pruned_feature_matrix(
+        constants.DATASET_RELATIVE_PATH,
+        document_count,
+        token_id_dictionary,
+        token_frequency,
+        constants.PRUNED_SIZE)
+
+    pruned_feature_matrix_size = sys.getsizeof(pruned_feature_matrix)
+    print(pruned_feature_matrix[0:100, 0])
+    print(f'pruned feature matrix size: { pruned_feature_matrix_size }')
+
+    # create target vector
+    target_vector = utils.create_target_vector(
+        constants.DATASET_RELATIVE_PATH,
+        document_count)
+
+    target_vector_size = sys.getsizeof(target_vector)
+    print(target_vector[0:100])
+    print(f'target vector size: { target_vector_size }')
 
     # # count variables
     # file_count = 0
