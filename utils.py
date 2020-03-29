@@ -5,6 +5,7 @@ Utility Methods Module
 # import necessary modules
 import os
 import re
+import sys
 import numpy as np
 import constants
 
@@ -61,7 +62,7 @@ def create_token_id_dictionary(path):
     document_count = 0
     id_count = 0
     token_id_dictionary = {}
-    token_frequency = {}
+    token_count = {}
     for topic_directory in os.listdir(path):
         topic_path = os.path.join(path, topic_directory)
 
@@ -75,25 +76,33 @@ def create_token_id_dictionary(path):
             for token in tokenize(document_contents, constants.DELIMITERS):
                 token = preprocess(token)
 
-                if token != '!' and token not in token_id_dictionary:
-                    token_id_dictionary[token] = id_count
-                    id_count += 1
+                if token != '!':
+                    if token not in token_id_dictionary:
+                        token_id_dictionary[token] = id_count
+                        id_count += 1
 
-                if token != '!' and token not in token_frequency:
-                    token_frequency[token] = 0
-                elif token != '!' and token in token_frequency:
-                    token_frequency[token] += 1
+                    if token in token_count:
+                        token_count[token] += 1
+                    else:
+                        token_count[token] = 1
 
+    print(f'{ document_count } documents analyzed...')
     print('writing token id dictionary to file...')
-    with open('token_id_dictionary.txt', 'w') as file:
-        file.write('token id dictionary')
+    with open('token_id_dictionary.txt', 'w+') as file:
+        file.write('token id dictionary\n')
         file.write(
             f'total number of documents tokenized: { document_count }\n')
         file.write(f'total number of distinct tokens: { id_count }\n')
         for token, id_count in token_id_dictionary.items():
             file.write(f'{ token }: { id_count }\n')
 
-    return document_count, token_id_dictionary, token_frequency
+    print('writing token count to file...')
+    with open('token_count.txt', 'w+') as file:
+        file.write('token count\n')
+        for token, count in token_count.items():
+            file.write(f'{ token }: { count }\n')
+
+    return token_id_dictionary, token_count, document_count
 
 
 def prune_token_id_dictionary(token_frequency, max_tokens):
@@ -122,7 +131,7 @@ def prune_token_id_dictionary(token_frequency, max_tokens):
 
     print('writing token frequency dictionary to file...')
     with open('token_frequency_dictionary.txt', 'w') as file:
-        file.write('token frequency dictionary')
+        file.write('token frequency dictionary\n')
         for token, frequency in token_frequency_sorted:
             file.write(f'{ token }: { frequency }\n')
 
@@ -164,6 +173,10 @@ def create_feature_matrix(path, document_count, token_id_dictionary):
                                    token_id_dictionary[token]] += 1
 
             document_count += 1
+
+    feature_matrix_size = sys.getsizeof(feature_matrix)
+    print(f'feature matrix shape: { feature_matrix.shape }')
+    print(f'feature matrix size: { feature_matrix_size }')
 
     return feature_matrix
 
@@ -210,7 +223,11 @@ def create_pruned_feature_matrix(path, document_count, token_frequency, pruned_s
 
             document_count += 1
 
-        return pruned_feature_matrix
+    pruned_feature_matrix_size = sys.getsizeof(pruned_feature_matrix)
+    print(f'pruned feature matrix shape: { pruned_feature_matrix.shape }')
+    print(f'pruned feature matrix size: { pruned_feature_matrix_size }')
+
+    return pruned_feature_matrix
 
 
 def create_target_vector(path, document_count):
@@ -237,5 +254,9 @@ def create_target_vector(path, document_count):
             document_count += 1
 
         topic_count += 1
+
+    target_vector_size = sys.getsizeof(target_vector)
+    print(f'target vector shape: { target_vector.shape }')
+    print(f'target vector size: { target_vector_size }')
 
     return target_vector
