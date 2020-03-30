@@ -53,7 +53,7 @@ def tokenize(string, delimiters):
     return re.split('[' + delimiters + ']', string)
 
 
-def create_token_ids(path):
+def create_token_ids(path, pruned_size=constants.DEFAULT_PRUNED_SIZE):
     """
     Create Token Id Dictionary
 
@@ -68,7 +68,7 @@ def create_token_ids(path):
     print('populate token id dictionary...')
     document_count = 0
     id_count = 0
-    token_id_dictionary = {}
+    token_ids = {}
     token_count = {}
     for topic_directory in os.listdir(path):
         topic_path = os.path.join(path, topic_directory)
@@ -83,8 +83,8 @@ def create_token_ids(path):
                 token = preprocess(token)
 
                 if token != '!':
-                    if token not in token_id_dictionary:
-                        token_id_dictionary[token] = id_count
+                    if token not in token_ids:
+                        token_ids[token] = id_count
                         id_count += 1
 
                     if token in token_count:
@@ -93,11 +93,11 @@ def create_token_ids(path):
                         token_count[token] = 1
         document_count += document_index + 1
 
-    print(f'{ len(token_id_dictionary) } tokens parsed...')
+    print(f'{ len(token_ids) } tokens parsed...')
     print(f'{ document_count } documents analyzed...')
     print('writing token id dictionary to file...')
     with open('token_id_dictionary.csv', 'w+') as file:
-        for token, id_count in token_id_dictionary.items():
+        for token, id_count in token_ids.items():
             file.write(f'{ token }, { id_count }\n')
 
     token_count = sorted(token_count.items(), key=lambda x: x[1], reverse=True)
@@ -107,7 +107,9 @@ def create_token_ids(path):
         for token, count in token_count:
             file.write(f'{ token }, { count }\n')
 
-    return token_id_dictionary, token_count, document_count
+    pruned_token_ids = prune_token_ids(token_count, pruned_size)
+
+    return token_ids, pruned_token_ids, document_count
 
 
 def prune_token_ids(token_count, size):
@@ -135,24 +137,24 @@ def prune_token_ids(token_count, size):
     return pruned_token_ids
 
 
-def create_features_and_targets(path, document_count, token_id):
+def create_features_and_targets(path, document_count, token_ids):
     """
     Create Feature Matrix
 
     path - relative path to the data set
-    token_id_dictionary - unique token id dictionary
+    token_ids - unique token id dictionary
 
     This method will create a feature matrix for the provided documents in the
     data set.
     """
 
-    print('initialize features')
-    features = np.zeros((document_count, len(token_id)), dtype='uint8')
+    print('initialize features matrix...')
+    features = np.zeros((document_count, len(token_ids)), dtype='uint8')
 
-    print('initialize targets')
+    print('initialize targets matrix...')
     targets = np.zeros((document_count, 1), dtype='uint8')
 
-    print('populate features and targets...')
+    print('populate features and targets matrices...')
     target_topic_dict = {}
     document_count = 0
     for topic_index, topic_directory in enumerate(os.listdir(path)):
@@ -171,7 +173,7 @@ def create_features_and_targets(path, document_count, token_id):
                 token = preprocess(token)
 
                 if token != '!':
-                    features[document_count, token_id[token]] += 1
+                    features[document_count, token_ids[token]] += 1
             document_count += 1
 
     features_size = sys.getsizeof(features)
@@ -190,7 +192,7 @@ def create_features_and_targets(path, document_count, token_id):
     return features, targets
 
 
-def create_pruned_features(path, document_count, token_count, size):
+def create_pruned_features_and_targets(path, document_count, pruned_token_ids):
     """
     Create Pruned Feature Matrix
 
@@ -202,19 +204,21 @@ def create_pruned_features(path, document_count, token_count, size):
     This method will create a pruned feature matrix.
     """
 
-    print('create pruned token id dictionary...')
-    pruned_token_ids = prune_token_ids(token_count, size)
+    size = len(pruned_token_ids)
 
     print('initialize pruned feature matrix...')
     pruned_features = np.zeros((document_count, size), dtype='uint8')
 
+    print('initialize pruned target vector...')
+    pruned_targets = np.zeros((document_count, 1), dtype='uint8')
+
     print('populate pruned feature matrix...')
     document_count = 0
-    for topic_directory in os.listdir(path):
-        print(topic_directory)
+    for topic_index, topic_directory in enumerate(os.listdir(path)):
         topic_path = os.path.join(path, topic_directory)
 
         for document_name in os.listdir(topic_path):
+            pruned_targets[document_count] = topic_index
             document_path = os.path.join(topic_path, document_name)
 
             document_contents = open(
@@ -232,7 +236,11 @@ def create_pruned_features(path, document_count, token_count, size):
     print(f'pruned feature matrix shape: { pruned_features.shape }')
     print(f'pruned feature matrix size: { pruned_features_size }')
 
-    return pruned_features
+    pruned_targets_size = sys.getsizeof(pruned_targets)
+    print(f'pruned targets shape: { pruned_targets.shape }')
+    print(f'pruned targets size: { pruned_targets_size }')
+
+    return pruned_features, pruned_targets
 
 
 def create_targets(path, document_count):

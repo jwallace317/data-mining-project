@@ -15,11 +15,10 @@ class NaiveBayesClassifier():
     Naive Bayes Classifier Class
     """
 
-    def __init__(self, path, token_ids, token_count):
+    def __init__(self, path, token_ids):
         print('initialize naive bayes classifier...')
         self.path = path
         self.token_ids = token_ids
-        self.token_count = token_count
 
         print('create topic probabilities matrix')
         self.topic_probs = self.create_topic_probs()
@@ -53,30 +52,10 @@ class NaiveBayesClassifier():
 
         return topic_probs
 
-    def create_token_probs(self):
-        print('initialize token probabilites matrix...')
-        token_probs = np.zeros((len(self.token_count), 1), dtype='float32')
-
-        print('populate token probabilities matrix...')
-        count_sum = 0
-        for token, count in self.token_count.items():
-            token_probs[self.token_ids[token]
-                        ] = self.token_count[token]
-            count_sum += count
-        token_probs = np.divide(token_probs, count_sum)
-
-        print(token_probs[token_probs == 0])
-
-        token_probs_size = sys.getsizeof(token_probs)
-        print(f'token probabilities matrix shape: { token_probs.shape }')
-        print(f'token probabilities matrix size: { token_probs_size }')
-
-        return token_probs
-
     def create_token_topic_probs(self):
         print('initialize token given a certain topic probabilities matrix...')
         token_topic_probs = np.zeros(
-            (20, len(self.token_count)),
+            (20, len(self.token_ids)),
             dtype='float32')
 
         print('populate token given a certain topic probabilities matrix...')
@@ -94,7 +73,7 @@ class NaiveBayesClassifier():
                 for token in utils.tokenize(document_contents, constants.DELIMITERS):
                     token = utils.preprocess(token)
 
-                    if token != '!':
+                    if token != '!' and token in self.token_ids:
                         if token in topic_token_count:
                             topic_token_count[token] += 1
                         else:
@@ -113,7 +92,7 @@ class NaiveBayesClassifier():
 
         return token_topic_probs
 
-    def classify(self, feature):
+    def predict(self, feature):
         probs = []
         for topic_index, topic_directory in enumerate(os.listdir(constants.DATASET_RELATIVE_PATH)):
             prob = 0
@@ -122,5 +101,9 @@ class NaiveBayesClassifier():
                     prob += self.token_topic_probs[topic_index, token]
             prob += self.topic_probs[topic_index]
             probs.append(prob)
+
+        probs_sum = np.sum(probs)
+        probs = np.divide(probs, probs_sum)
+        print(f'probs sum parity check = { np.sum(probs) }')
 
         return np.argmax(probs)

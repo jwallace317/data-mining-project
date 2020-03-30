@@ -19,4 +19,4 @@ REMOVE_TOKENS = ['from', 'a', 'the', 'to', 'in', 'of', 'an',
 
 NUMBERS = '0123456789'
 
-PRUNED_SIZE = 1000
+DEFAULT_PRUNED_SIZE = 1000
