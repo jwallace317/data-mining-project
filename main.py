@@ -10,6 +10,7 @@ import constants
 import utils
 from naive_bayes_classifier import NaiveBayesClassifier
 from sklearn.neighbors import KNeighborsClassifier
+from k_nearest_neighbors import KNearestNeighbors
 
 
 # task main
@@ -89,79 +90,6 @@ def main5():
     print(f'\nELAPSED TIME: { elapsed_time }\n')
 
 
-def main1():
-    document_contents = open(
-        '/Users/jameswallace/Documents/osu/sp20/cse5243/document_classification/20news-train/alt.atheism/49960', 'rb').read().decode('utf-8', 'ignore')
-
-    id_count = 0
-    token_id = {}
-    token_count = {}
-    for count, token in enumerate(utils.tokenize(document_contents, constants.DELIMITERS)):
-        token = utils.preprocess(token)
-
-        if token != '!':
-            if token not in token_id:
-                token_id[token] = id_count
-                token_count[token] = 1
-                id_count += 1
-            else:
-                token_count[token] += 1
-
-    print(f'total number of tokens parsed: { count }')
-    print(f'total number of distinct tokens: { len(token_id) }')
-    print(f'token id dictionary: { token_id }')
-    print(f'token count dictionary: { token_count }')
-
-    feature = np.zeros((1, len(token_id)))
-
-    for token in utils.tokenize(document_contents, constants.DELIMITERS):
-        token = utils.preprocess(token)
-
-        if token != '!':
-            feature[0, token_id[token]] += 1
-
-    print(f'feature matrix: { feature }')
-
-
-def main2():
-    token_ids, token_count, document_count = utils.create_token_ids(
-        constants.DATASET_RELATIVE_PATH)
-
-    features, targets, pruned_token_ids = utils.create_pruned_features_and_targets(
-        constants.DATASET_RELATIVE_PATH,
-        document_count,
-        token_count,
-        constants.PRUNED_SIZE)
-
-    nb_classifier = NaiveBayesClassifier(
-        constants.DATASET_RELATIVE_PATH,
-        pruned_token_ids,
-        token_count)
-
-    train_features, test_features, train_targets, test_targets = train_test_split(
-        features,
-        targets,
-        test_size=0.01)
-
-    incorrect = 0
-    correct = 0
-    count = 0
-    for feature, target in zip(test_features, test_targets):
-        prediction = nb_classifier.classify(feature)
-
-        if prediction != target:
-            print('INCORRECT')
-            incorrect += 1
-        else:
-            print('CORRECT')
-            correct += 1
-        print(f'prediction = { prediction } target = { target }')
-        count += 1
-
-    print(f'sample size = { count }')
-    print(f'accuracy = { correct / (correct + incorrect)}')
-
-
 def main():
 
     token_ids, pruned_token_ids, document_count = utils.create_token_ids(
@@ -177,45 +105,71 @@ def main():
         document_count,
         pruned_token_ids)
 
-    nb_classifier = NaiveBayesClassifier(
-        constants.DATASET_RELATIVE_PATH,
-        token_ids)
-
-    pruned_nb_classifier = NaiveBayesClassifier(
-        constants.DATASET_RELATIVE_PATH,
-        pruned_token_ids)
+    # nb_classifier = NaiveBayesClassifier(
+    #     constants.DATASET_RELATIVE_PATH,
+    #     token_ids)
+    #
+    # pruned_nb_classifier = NaiveBayesClassifier(
+    #     constants.DATASET_RELATIVE_PATH,
+    #     pruned_token_ids)
+    #
+    # train_features, test_features, train_targets, test_targets = train_test_split(
+    #     features,
+    #     targets,
+    #     test_size=0.0025)
+    #
+    # pruned_train_features, pruned_test_features, pruned_train_targets, pruned_test_targets = train_test_split(
+    #     pruned_features,
+    #     pruned_targets,
+    #     test_size=0.0025)
+    #
+    # print(f'test size = { len(test_targets) }')
+    # print(f'pruned test size = { len(pruned_test_targets) }')
+    #
+    # correct = 0
+    # for feature, target in zip(test_features, test_targets):
+    #     prediction = nb_classifier.predict(feature)
+    #
+    #     if prediction == target:
+    #         correct += 1
+    #
+    # pruned_correct = 0
+    # for feature, target in zip(pruned_test_features, pruned_test_targets):
+    #     prediction = pruned_nb_classifier.predict(feature)
+    #
+    #     if prediction == target:
+    #         pruned_correct += 1
+    #
+    # print(
+    #     f'accuracy of naive bayes classifier = { correct / len(test_targets)}')
+    # print(
+    #     f'accuracy of pruned naive bayes classifier = { pruned_correct / len(pruned_test_targets) }')
 
     train_features, test_features, train_targets, test_targets = train_test_split(
         features,
         targets,
-        test_size=0.0025)
+        test_size=0.1)
 
     pruned_train_features, pruned_test_features, pruned_train_targets, pruned_test_targets = train_test_split(
         pruned_features,
         pruned_targets,
-        test_size=0.0025)
+        test_size=0.1)
 
-    print(f'test size = { len(test_targets) }')
-    print(f'pruned test size = { len(pruned_test_targets) }')
+    knn_classifier = KNearestNeighbors(
+        50,
+        pruned_test_features,
+        pruned_test_targets)
+
+    print(f'sample size = { len(pruned_test_targets) }')
 
     correct = 0
-    for feature, target in zip(test_features, test_targets):
-        prediction = nb_classifier.predict(feature)
+    for feature, target in zip(pruned_test_features, pruned_test_targets):
+        prediction = knn_classifier.predict(feature)
 
         if prediction == target:
             correct += 1
 
-    pruned_correct = 0
-    for feature, target in zip(pruned_test_features, pruned_test_targets):
-        prediction = pruned_nb_classifier.predict(feature)
-
-        if prediction == target:
-            pruned_correct += 1
-
-    print(
-        f'accuracy of naive bayes classifier = { correct / len(test_targets)}')
-    print(
-        f'accuracy of pruned naive bayes classifier = { pruned_correct / len(pruned_test_targets) }')
+    print(f'accuracy = { correct / len(pruned_test_targets) }')
 
 
 if __name__ == '__main__':

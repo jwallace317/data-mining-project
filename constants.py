@@ -2,13 +2,15 @@
 Constants Module
 """
 
-DELIMITERS = ' \n-@.\t'
-
 DATASET_RELATIVE_PATH = '20news-train/'
 
-REMOVE_CHARACTERS = '<>|*():,!?\';/\\\"_[]`{}=~%^'
+DEFAULT_PRUNED_SIZE = 2000
 
-VOWELS = 'aeiou'
+DELIMITERS = ' \n-@.\t'
+
+NUMBERS = '0123456789'
+
+REMOVE_CHARACTERS = '<>|*():,!?\';/\\\"_[]`{}=~%^'
 
 REMOVE_TOKENS = ['from', 'a', 'the', 'to', 'in', 'of', 'an',
                  'and', 'by', 'that', 'it', 'is', '', 'with', 'for', 'reply',
@@ -17,6 +19,4 @@ REMOVE_TOKENS = ['from', 'a', 'the', 'to', 'in', 'of', 'an',
                  'was', 'but', 'they', 'there', 'what', 'can', 'your', 'has',
                  'some', 'who', 'subject', 'organization', 'will', 'would']
 
-NUMBERS = '0123456789'
-
-DEFAULT_PRUNED_SIZE = 1000
+VOWELS = 'aeiou'
