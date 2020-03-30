@@ -11,7 +11,7 @@ class KNearestNeighbors():
     K Nearest Neighbors Class
     """
 
-    def __init__(self, k_neighbors, features, targets):
+    def __init__(self, features, targets, k_neighbors=1):
         self.k_neighbors = k_neighbors
         self.features = features
         self.targets = targets
