@@ -8,6 +8,8 @@ DATASET_RELATIVE_PATH = '20news-train/'
 
 REMOVE_CHARACTERS = '<>|*():,!?\';/\\\"_[]`{}=~%^'
 
+VOWELS = 'aeiou'
+
 REMOVE_TOKENS = ['from', 'a', 'the', 'to', 'in', 'of', 'an',
                  'and', 'by', 'that', 'it', 'is', '', 'with', 'for', 'reply',
                  'were', 'are', 'its', 'such', 'very', 'when', 'i', 'be', 'or',

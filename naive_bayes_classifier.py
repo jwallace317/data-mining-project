@@ -15,32 +15,27 @@ class NaiveBayesClassifier():
     Naive Bayes Classifier Class
     """
 
-    def __init__(self, path, token_id_dictionary, token_count):
+    def __init__(self, path, token_ids, token_count):
         print('initialize naive bayes classifier...')
         self.path = path
-        self.token_id_dictionary = token_id_dictionary
+        self.token_ids = token_ids
         self.token_count = token_count
 
         print('create topic probabilities matrix')
         self.topic_probs = self.create_topic_probs()
-        print(self.topic_probs)
-
-        print(np.sum(self.topic_probs))
-
-        print('create token probabilities matrix...')
-        # self.token_probs = self.create_token_probs()
+        print(
+            f'topic probabilities parity check: { np.sum(self.topic_probs) }')
 
         print('create token given a certain topic probabilities matrix...')
-        # self.token_topic_probs = self.create_token_topic_probs()
+        self.token_topic_probs = self.create_token_topic_probs()
 
     def create_topic_probs(self):
         print('initialize topic probabilities vector...')
         topic_probs = np.zeros((20, 1), dtype='float32')
 
         print('populate topic probabilities vector...')
-        topic_count = 0
         total_document_count = 0
-        for topic_directory in os.listdir(self.path):
+        for topic_index, topic_directory in enumerate(os.listdir(self.path)):
             topic_path = os.path.join(self.path, topic_directory)
 
             document_count = 0
@@ -48,11 +43,8 @@ class NaiveBayesClassifier():
                 total_document_count += 1
                 document_count += 1
 
-            topic_probs[topic_count] = document_count
-            topic_count += 1
+            topic_probs[topic_index] = document_count
 
-        print(topic_probs)
-        print(np.sum(topic_probs))
         topic_probs = np.divide(topic_probs, total_document_count)
 
         topic_probs_size = sys.getsizeof(topic_probs)
@@ -68,7 +60,7 @@ class NaiveBayesClassifier():
         print('populate token probabilities matrix...')
         count_sum = 0
         for token, count in self.token_count.items():
-            token_probs[self.token_id_dictionary[token]
+            token_probs[self.token_ids[token]
                         ] = self.token_count[token]
             count_sum += count
         token_probs = np.divide(token_probs, count_sum)
@@ -88,10 +80,9 @@ class NaiveBayesClassifier():
             dtype='float32')
 
         print('populate token given a certain topic probabilities matrix...')
-        for topic_directory in os.listdir(self.path):
+        for topic_index, topic_directory in enumerate(os.listdir(self.path)):
             topic_path = os.path.join(self.path, topic_directory)
 
-            topic_count = 0
             topic_tokens_count = 0
             topic_token_count = {}
             for document_name in os.listdir(topic_path):
@@ -111,9 +102,8 @@ class NaiveBayesClassifier():
                         topic_tokens_count += 1
 
             for token, count in topic_token_count.items():
-                token_topic_probs[topic_count, self.token_id_dictionary[token]
+                token_topic_probs[topic_index, self.token_ids[token]
                                   ] = count / topic_tokens_count
-            topic_count += 1
 
         token_topic_probs_size = sys.getsizeof(token_topic_probs)
         print(
@@ -125,14 +115,12 @@ class NaiveBayesClassifier():
 
     def classify(self, feature):
         probs = []
-        for topic_count in range(20):
+        for topic_index, topic_directory in enumerate(os.listdir(constants.DATASET_RELATIVE_PATH)):
             prob = 0
             for token, count in enumerate(feature):
                 if count != 0:
-                    prob += self.token_topic_probs[topic_count, token]
-                    # prob -= self.token_probs[token]
-            prob += self.topic_probs[topic_count]
+                    prob += self.token_topic_probs[topic_index, token]
+            prob += self.topic_probs[topic_index]
             probs.append(prob)
-        print(probs)
 
         return np.argmax(probs)

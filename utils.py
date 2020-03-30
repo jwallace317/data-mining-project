@@ -22,6 +22,7 @@ def preprocess(token):
 
     token = token.lower()
 
+    vowels = False
     for character in token:
         if character in constants.NUMBERS:
             token = '!'
@@ -30,7 +31,10 @@ def preprocess(token):
         if character in constants.REMOVE_CHARACTERS:
             token = token.replace(character, '')
 
-    if len(token) <= 2 or token in constants.REMOVE_TOKENS:
+        if character in constants.VOWELS:
+            vowels = True
+
+    if len(token) <= 2 or token in constants.REMOVE_TOKENS or not vowels:
         token = '!'
 
     return token
@@ -96,6 +100,13 @@ def create_token_ids(path):
         for token, id_count in token_id_dictionary.items():
             file.write(f'{ token }, { id_count }\n')
 
+    token_count = sorted(token_count.items(), key=lambda x: x[1], reverse=True)
+
+    print('writing token count to file...')
+    with open('token_count.csv', 'w+') as file:
+        for token, count in token_count:
+            file.write(f'{ token }, { count }\n')
+
     return token_id_dictionary, token_count, document_count
 
 
@@ -112,14 +123,7 @@ def prune_token_ids(token_count, size):
     descending order.
     """
 
-    sorted_token_count = sorted(
-        token_count.items(), key=lambda x: x[1], reverse=True)
-    pruned_token_count = sorted_token_count[0:size]
-
-    print('writing token count to file...')
-    with open('token_count.txt', 'w+') as file:
-        for token, count in sorted_token_count:
-            file.write(f'{ token }, { count }\n')
+    pruned_token_count = token_count[0:size]
 
     print('populate pruned token id dictionary...')
     id_count = 0
@@ -131,7 +135,7 @@ def prune_token_ids(token_count, size):
     return pruned_token_ids
 
 
-def create_features(path, document_count, token_id):
+def create_features_and_targets(path, document_count, token_id):
     """
     Create Feature Matrix
 
@@ -142,15 +146,22 @@ def create_features(path, document_count, token_id):
     data set.
     """
 
-    print('initialize feature matrix...')
-    feature_matrix = np.zeros((document_count, len(token_id)), dtype='uint8')
+    print('initialize features')
+    features = np.zeros((document_count, len(token_id)), dtype='uint8')
 
-    print('populate feature matrix...')
+    print('initialize targets')
+    targets = np.zeros((document_count, 1), dtype='uint8')
+
+    print('populate features and targets...')
+    target_topic_dict = {}
     document_count = 0
-    for topic_directory in os.listdir(path):
+    for topic_index, topic_directory in enumerate(os.listdir(path)):
         topic_path = os.path.join(path, topic_directory)
 
+        target_topic_dict[topic_directory] = topic_index
+
         for document_name in os.listdir(topic_path):
+            targets[document_count, 0] = topic_index
             document_path = os.path.join(topic_path, document_name)
 
             document_contents = open(
@@ -160,14 +171,23 @@ def create_features(path, document_count, token_id):
                 token = preprocess(token)
 
                 if token != '!':
-                    feature_matrix[document_count, token_id[token]] += 1
+                    features[document_count, token_id[token]] += 1
             document_count += 1
 
-    feature_matrix_size = sys.getsizeof(feature_matrix)
-    print(f'feature matrix shape: { feature_matrix.shape }')
-    print(f'feature matrix size: { feature_matrix_size }')
+    features_size = sys.getsizeof(features)
+    print(f'features shape: { features.shape }')
+    print(f'features size: { features_size }')
 
-    return feature_matrix
+    targets_size = sys.getsizeof(targets)
+    print(f'targets shape: { targets.shape }')
+    print(f'targets size: { targets_size }')
+
+    print('writing target topic dictionary to file...')
+    with open('target_topic_dictionary.csv', 'w+') as file:
+        for topic, target in target_topic_dict.items():
+            file.write(f'{ topic }, { target }\n')
+
+    return features, targets
 
 
 def create_pruned_features(path, document_count, token_count, size):
@@ -191,6 +211,7 @@ def create_pruned_features(path, document_count, token_count, size):
     print('populate pruned feature matrix...')
     document_count = 0
     for topic_directory in os.listdir(path):
+        print(topic_directory)
         topic_path = os.path.join(path, topic_directory)
 
         for document_name in os.listdir(topic_path):
@@ -228,16 +249,59 @@ def create_targets(path, document_count):
     target_vector = np.zeros((document_count, 1))
 
     print('populate target vector...')
+    target_topic = {}
     document_count = 0
     for topic_index, topic_directory in enumerate(os.listdir(path)):
+        target_topic[topic_directory] = topic_index
         topic_path = os.path.join(path, topic_directory)
 
         for document_name in os.listdir(topic_path):
             target_vector[document_count] = topic_index
             document_count += 1
 
+    with open('target_dictionary.csv', 'w+') as file:
+        for topic, target in target_topic.items():
+            file.write(f'{ topic }, { target }\n')
+
     target_vector_size = sys.getsizeof(target_vector)
     print(f'target vector shape: { target_vector.shape }')
     print(f'target vector size: { target_vector_size }')
 
     return target_vector
+
+
+def create_token_topic_probs(path, token_ids):
+    for topic_directory in os.listdir(path):
+        topic_path = os.path.join(path, topic_directory)
+
+        token_count = 0
+        topic_token_count = {}
+        for document_name in os.listdir(topic_path):
+            document_path = os.path.join(topic_path, document_name)
+
+            document_contents = open(
+                document_path, 'rb').read().decode('utf-8', 'ignore')
+
+            for token in tokenize(document_contents, constants.DELIMITERS):
+                token = preprocess(token)
+
+                if token != '!':
+                    token_count += 1
+                    if token in topic_token_count:
+                        topic_token_count[token] += 1
+
+                    else:
+                        topic_token_count[token] = 1
+
+        with open('test.csv', 'w+') as file:
+            file.write(f'topic: { topic_directory }\n')
+            file.write(
+                f'total number of distinct tokens: { len(topic_token_count)}\n')
+            file.write(f'total number of tokens: { token_count }\n')
+            for token, id in token_ids.items():
+                if token in topic_token_count:
+                    file.write(f'{ topic_token_count[token] }\n')
+                else:
+                    file.write(f'0\n')
+
+        input()

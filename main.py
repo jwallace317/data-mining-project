@@ -3,14 +3,12 @@ Main Module
 """
 
 # import necessary modules
-import os
-import sys
 import time
 from sklearn.model_selection import train_test_split
+import numpy as np
 import constants
 import utils
 from naive_bayes_classifier import NaiveBayesClassifier
-import numpy as np
 
 
 # task main
@@ -125,28 +123,34 @@ def main1():
 
 
 def main2():
-    token_id, token_count, document_count = utils.create_token_ids(
+    token_ids, token_count, document_count = utils.create_token_ids(
         constants.DATASET_RELATIVE_PATH)
 
-    features = utils.create_pruned_features(
+    features, targets = utils.create_features_and_targets(
         constants.DATASET_RELATIVE_PATH,
         document_count,
-        token_count,
-        constants.PRUNED_SIZE)
+        token_ids)
 
-    targets = utils.create_targets(
+    nb_classifier = NaiveBayesClassifier(
         constants.DATASET_RELATIVE_PATH,
-        document_count)
+        token_ids,
+        token_count)
 
-    # nb_classifier = NaiveBayesClassifier(
-    #     constants.DATASET_RELATIVE_PATH,
-    #     token_id,
-    #     token_count)
-    #
-    # train_features, test_features, train_targets, test_targets = train_test_split(
-    #     features,
-    #     targets,
-    #     test_size=0.001)
+    train_features, test_features, train_targets, test_targets = train_test_split(
+        features,
+        targets,
+        test_size=0.001)
+
+    for feature, target in zip(test_features, test_targets):
+        prediction = nb_classifier.classify(feature)
+        print(f'prediction = { prediction }')
+
+        if prediction != target:
+            print('INCORRECT')
+        else:
+            print('CORRECT')
+
+        print(f'prediction = { prediction } target = { target }')
 
 
 if __name__ == '__main__':
