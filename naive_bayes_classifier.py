@@ -4,8 +4,10 @@ Naive Bayes Classifier Module
 
 # import necessary modules
 import os
+import sys
 import constants
 import utils
+import numpy as np
 
 
 class NaiveBayesClassifier():
@@ -13,69 +15,124 @@ class NaiveBayesClassifier():
     Naive Bayes Classifier Class
     """
 
-    def __init__(self, path):
+    def __init__(self, path, token_id_dictionary, token_count):
         print('initialize naive bayes classifier...')
         self.path = path
+        self.token_id_dictionary = token_id_dictionary
+        self.token_count = token_count
 
-    def create_total_frequency_dictionary(self, token_frequency):
-        """
-        Create Total Frequency Dictionary
+        print('create topic probabilities matrix')
+        self.topic_probs = self.create_topic_probs()
+        print(self.topic_probs)
 
-        This method writes to a file the total frequency of a given token in the
-        entirety of the data set.
-        """
+        print(np.sum(self.topic_probs))
 
-        num_tokens = len(token_frequency)
+        print('create token probabilities matrix...')
+        # self.token_probs = self.create_token_probs()
 
-        print('initialize total frequency dictionary...')
-        print('populate total frequency dictionary...')
-        total_frequency_dictionary = {}
-        for token, frequency in token_frequency.items():
-            total_frequency_dictionary[token] = frequency / num_tokens
+        print('create token given a certain topic probabilities matrix...')
+        # self.token_topic_probs = self.create_token_topic_probs()
 
-        print('writing total frequency dictionary to file...')
-        with open('total_frequency_dictionary.txt', 'w') as file:
-            file.write('total frequency dictionary\n')
-            for token, frequency in total_frequency_dictionary.items():
-                file.write(f'{ token }: { frequency }\n')
+    def create_topic_probs(self):
+        print('initialize topic probabilities vector...')
+        topic_probs = np.zeros((20, 1), dtype='float32')
 
-        return total_frequency_dictionary
-
-    def create_document_frequency_dictionary(self, document_token_count):
-        """
-        Create Document Frequency Dictionary
-
-        This method will write to many files the local token frequency of tokens
-        contained in the given document.
-        """
-
+        print('populate topic probabilities vector...')
+        topic_count = 0
+        total_document_count = 0
         for topic_directory in os.listdir(self.path):
             topic_path = os.path.join(self.path, topic_directory)
 
+            document_count = 0
+            for document_name in os.listdir(topic_path):
+                total_document_count += 1
+                document_count += 1
+
+            topic_probs[topic_count] = document_count
+            topic_count += 1
+
+        print(topic_probs)
+        print(np.sum(topic_probs))
+        topic_probs = np.divide(topic_probs, total_document_count)
+
+        topic_probs_size = sys.getsizeof(topic_probs)
+        print(f'topic probabilities vector shape: { topic_probs.shape }')
+        print(f'topic probabilities vector size: { topic_probs_size }')
+
+        return topic_probs
+
+    def create_token_probs(self):
+        print('initialize token probabilites matrix...')
+        token_probs = np.zeros((len(self.token_count), 1), dtype='float32')
+
+        print('populate token probabilities matrix...')
+        count_sum = 0
+        for token, count in self.token_count.items():
+            token_probs[self.token_id_dictionary[token]
+                        ] = self.token_count[token]
+            count_sum += count
+        token_probs = np.divide(token_probs, count_sum)
+
+        print(token_probs[token_probs == 0])
+
+        token_probs_size = sys.getsizeof(token_probs)
+        print(f'token probabilities matrix shape: { token_probs.shape }')
+        print(f'token probabilities matrix size: { token_probs_size }')
+
+        return token_probs
+
+    def create_token_topic_probs(self):
+        print('initialize token given a certain topic probabilities matrix...')
+        token_topic_probs = np.zeros(
+            (20, len(self.token_count)),
+            dtype='float32')
+
+        print('populate token given a certain topic probabilities matrix...')
+        for topic_directory in os.listdir(self.path):
+            topic_path = os.path.join(self.path, topic_directory)
+
+            topic_count = 0
+            topic_tokens_count = 0
+            topic_token_count = {}
             for document_name in os.listdir(topic_path):
                 document_path = os.path.join(topic_path, document_name)
 
                 document_contents = open(
                     document_path, 'rb').read().decode('utf-8', 'ignore')
 
-                token_frequency = {}
                 for token in utils.tokenize(document_contents, constants.DELIMITERS):
                     token = utils.preprocess(token)
 
                     if token != '!':
-                        if token not in token_frequency:
-                            token_frequency[token] = 0
+                        if token in topic_token_count:
+                            topic_token_count[token] += 1
                         else:
-                            token_frequency[token] += 1
+                            topic_token_count[token] = 1
+                        topic_tokens_count += 1
 
-                token_freq = {}
-                for token, frequency in token_frequency.items():
-                    token_freq[token] = frequency / \
-                        document_token_count[document_name]
+            for token, count in topic_token_count.items():
+                token_topic_probs[topic_count, self.token_id_dictionary[token]
+                                  ] = count / topic_tokens_count
+            topic_count += 1
 
-                with open('document_token_probs/' + topic_directory + '/' + document_name + '.txt', 'w+') as file:
-                    for token, frequency in token_freq.items():
-                        file.write(f'{ token }: { frequency }\n')
+        token_topic_probs_size = sys.getsizeof(token_topic_probs)
+        print(
+            f'token given topic probabilities matrix shape: { token_topic_probs.shape }')
+        print(
+            f'token given topic probabilities matrix size: { token_topic_probs_size }')
 
-    def classify(self, feature, token_id_dictionary):
-        return 0
+        return token_topic_probs
+
+    def classify(self, feature):
+        probs = []
+        for topic_count in range(20):
+            prob = 0
+            for token, count in enumerate(feature):
+                if count != 0:
+                    prob += self.token_topic_probs[topic_count, token]
+                    # prob -= self.token_probs[token]
+            prob += self.topic_probs[topic_count]
+            probs.append(prob)
+        print(probs)
+
+        return np.argmax(probs)
