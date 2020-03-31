@@ -104,6 +104,5 @@ class NaiveBayesClassifier():
 
         probs_sum = np.sum(probs)
         probs = np.divide(probs, probs_sum)
-        print(f'probs sum parity check = { np.sum(probs) }')
 
         return np.argmax(probs)

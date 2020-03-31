@@ -4,7 +4,7 @@ Constants Module
 
 DATASET_RELATIVE_PATH = '20news-train/'
 
-DEFAULT_PRUNED_SIZE = 2000
+DEFAULT_PRUNED_SIZE = 5000
 
 DELIMITERS = ' \n-@.\t'
 
