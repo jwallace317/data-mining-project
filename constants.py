@@ -1,5 +1,8 @@
 """
 Constants Module
+
+This module contains all the constant values that are used during document
+classification by various algorithms.
 """
 
 DATASET_RELATIVE_PATH = '20news-train/'

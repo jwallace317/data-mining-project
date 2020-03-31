@@ -5,16 +5,17 @@ Main Module
 # import necessary modules
 import time
 from sklearn.model_selection import train_test_split
-import numpy as np
 import constants
 import utils
 from naive_bayes_classifier import NaiveBayesClassifier
-from sklearn.neighbors import KNeighborsClassifier
 from k_nearest_neighbors import KNearestNeighbors
 
 
 # task main
 def main():
+    """
+    Task Main
+    """
 
     # create token ids both pruned and unpruned
     start = time.time()
@@ -178,7 +179,7 @@ def main():
     knn_classifier = KNearestNeighbors(
         pruned_test_features,
         pruned_test_targets,
-        k_neighbors=20)
+        k_neighbors=25)
 
     end = time.time()
     elapsed_time = end - start

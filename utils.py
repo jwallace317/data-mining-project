@@ -14,60 +14,84 @@ def preprocess(token):
     """
     Preprocess
 
-    token - the string token to be preprocessed
+    This method takes a given token and preprocesses the token to remove
+    unwanted characters and tokens that do not provide relevant information.
 
-    This method will preprocess a token and determine if a given token is a
-    relevant piece of information.
+    Args:
+        token (string): The token to be preprocessed.
+
+    Returns:
+        token (string): The token after preprocessing.
     """
 
+    # remove case
     token = token.lower()
 
     vowels = False
     for character in token:
+
+        # remove tokens containing numbers
         if character in constants.NUMBERS:
             token = '!'
             break
 
+        # remove certain characters
         if character in constants.REMOVE_CHARACTERS:
             token = token.replace(character, '')
 
+        # ensure the token contains a vowel to remove many nonsense tokens
         if character in constants.VOWELS:
             vowels = True
 
+    # remove all one letter tokens and tokens that do not contain a vowel
     if len(token) <= 2 or token in constants.REMOVE_TOKENS or not vowels:
         token = '!'
 
     return token
 
 
-def tokenize(string, delimiters):
+def tokenize(content, delimiters):
     """
     Tokenize
 
-    string - string to be tokenized
-    delimiters - string of delimiters to tokenize by
+    Args:
+        content (string): The content to be tokenized
+        delimiters (string): A string of characters wished to be used as
+        delimiters
 
-    This method tokenizes the given string by the given delimiters.
+    Returns:
+        tokens (list[string]): The list of tokens created by the delimiters
     """
 
-    return re.split('[' + delimiters + ']', string)
+    tokens = re.split('[' + delimiters + ']', content)
+
+    return tokens
 
 
 def create_token_ids(path, pruned_size=constants.DEFAULT_PRUNED_SIZE):
     """
-    Create Token Id Dictionary
+    Create Token ids
 
-    path - relative path to data set
+    This method scans through the data set and creates the pruned and unpruned
+    token id dictionarys. The token id dictionary contains valid tokens as keys
+    and their unique id as values.
 
-    This method scans through the provided documents and creates a unique
-    token-id dictionary as well as a token frequency dictionary. This method
-    will also write the contents of the unique token-id dictionary to a file.
+    Args:
+        path (string): The relative path to the data set.
+        pruned_size (int): The desired pruned size of the pruned token id.
+        dictionary
+
+    Returns:
+        token_ids (dict): The full length token id dictionary.
+        pruned_token_ids (dict): The pruned token id dictionary.
+        document_count (int): The number of documents contained in the data set.
     """
+
+    document_count = 0
+    id_count = 0
 
     print('initialize token id dictionary...')
     print('populate token id dictionary...')
-    document_count = 0
-    id_count = 0
     token_ids = {}
     token_count = {}
     for topic_directory in os.listdir(path):
@@ -95,8 +119,9 @@ def create_token_ids(path, pruned_size=constants.DEFAULT_PRUNED_SIZE):
 
     print(f'{ len(token_ids) } tokens parsed...')
     print(f'{ document_count } documents analyzed...')
+
     print('writing token id dictionary to file...')
-    with open('token_id_dictionary.csv', 'w+') as file:
+    with open('token_id.csv', 'w+') as file:
         for token, id_count in token_ids.items():
             file.write(f'{ token }, { id_count }\n')
 
@@ -114,15 +139,18 @@ def create_token_ids(path, pruned_size=constants.DEFAULT_PRUNED_SIZE):
 
 def prune_token_ids(token_count, size):
     """
-    Prune Token Id Dictionary
+    Prune Token Ids
 
-    token_id_dictionary - the unique token id dictionary
-    max_tokens - the max number of the most frequent tokens to keep
+    This method will create a pruned token id dictionary that only contains ids
+    for the most common tokens up to the size parameter.
 
-    This method will prune the given token id dictionary and remove all the
-    tokens that are not within the max number of most frequent tokens. This
-    method will also write to a file the most frequent tokens sorted in
-    descending order.
+    Args:
+        token_count (dict[string]): A dictionary that contains the count of
+        every valid token.
+        size (int): The max size of the pruned token id dictionary.
+
+    Returns:
+        prune_token_ids (dict[string]): The pruned token id dictionary.
     """
 
     pruned_token_count = token_count[0:size]
@@ -139,13 +167,20 @@ def prune_token_ids(token_count, size):
 
 def create_features_and_targets(path, document_count, token_ids):
     """
-    Create Feature Matrix
+    Create Features and Targets
 
-    path - relative path to the data set
-    token_ids - unique token id dictionary
+    This method will create the full size features and targets matrices. Each
+    row of the features matrix will represent a document and each column index
+    is mapped to a unique token.
 
-    This method will create a feature matrix for the provided documents in the
-    data set.
+    Args:
+        document_count (int): The total number of documents contained in the
+        data set.
+        token_ids (dict[string]): The unique token id dictionary.
+
+    Returns:
+        features (np.array): The features matrix.
+        targets (np.array): The targets matrix.
     """
 
     print('initialize features matrix...')
@@ -194,14 +229,20 @@ def create_features_and_targets(path, document_count, token_ids):
 
 def create_pruned_features_and_targets(path, document_count, pruned_token_ids):
     """
-    Create Pruned Feature Matrix
+    Create Pruned Features and Targets
 
-    path - relative path to the data set
-    document_count - total number of documents within the data set
-    token_id_dictionary - unique token id dictionary
-    pruned_size - the desired pruned size of the feature matrix
+    This method creates pruned features and targets matrices according to the
+    pruned token id dictionary.
 
-    This method will create a pruned feature matrix.
+    Args:
+        path (string): The relative path to the data set
+        document_count (int): The total number of documents contained within the
+        data set.
+        pruned_token_ids (dict[string]): The pruned unique token id dictionary.
+
+    Returns:
+        pruned_features (np.array): The pruned features matrix.
+        pruned_targets (np.array): The pruned targets matrix.
     """
 
     size = len(pruned_token_ids)

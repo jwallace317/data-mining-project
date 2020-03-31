@@ -5,9 +5,9 @@ Naive Bayes Classifier Module
 # import necessary modules
 import os
 import sys
+import numpy as np
 import constants
 import utils
-import numpy as np
 
 
 class NaiveBayesClassifier():
@@ -29,6 +29,14 @@ class NaiveBayesClassifier():
         self.token_topic_probs = self.create_token_topic_probs()
 
     def create_topic_probs(self):
+        """
+        Create Topic Probabilities
+
+        Returns:
+            topic_probs (list[float32]): A list containing the likelihood of
+            each topic in a random sample of topics.
+        """
+
         print('initialize topic probabilities vector...')
         topic_probs = np.zeros((20, 1), dtype='float32')
 
@@ -37,12 +45,10 @@ class NaiveBayesClassifier():
         for topic_index, topic_directory in enumerate(os.listdir(self.path)):
             topic_path = os.path.join(self.path, topic_directory)
 
-            document_count = 0
-            for document_name in os.listdir(topic_path):
+            for document_count in range(len(os.listdir(topic_path))):
                 total_document_count += 1
-                document_count += 1
 
-            topic_probs[topic_index] = document_count
+            topic_probs[topic_index] = document_count + 1
 
         topic_probs = np.divide(topic_probs, total_document_count)
 
@@ -53,6 +59,14 @@ class NaiveBayesClassifier():
         return topic_probs
 
     def create_token_topic_probs(self):
+        """
+        Create Token Given Topic Probabilities
+
+        Returns:
+            token_topic_probs: A matrix containing the likelihoods of each token
+            being present in a document given the topic.
+        """
+
         print('initialize token given a certain topic probabilities matrix...')
         token_topic_probs = np.zeros(
             (20, len(self.token_ids)),
@@ -93,8 +107,19 @@ class NaiveBayesClassifier():
         return token_topic_probs
 
     def predict(self, feature):
+        """
+        Predict
+
+        Args:
+            feature: A row vector containing the feature data
+
+        Returns:
+            majority: The majority vote of the k nearest neighbors for the
+            predicted target class.
+        """
+
         probs = []
-        for topic_index, topic_directory in enumerate(os.listdir(constants.DATASET_RELATIVE_PATH)):
+        for topic_index in range(len(os.listdir(constants.DATASET_RELATIVE_PATH))):
             prob = 0
             for token, count in enumerate(feature):
                 if count != 0:
