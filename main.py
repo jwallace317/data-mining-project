@@ -10,7 +10,7 @@ from sklearn.model_selection import train_test_split
 
 import constants
 import utils
-from k_means_classifier import KMeansClassifier, KmeansPlusPlusClassifier
+from k_means_classifier import KMeansClassifier, KMeansPlusPlusClassifier
 
 
 # task main
@@ -68,20 +68,30 @@ def main():
     print(f'test pruned features shape: {test_pruned_features.shape}')
     print(f'test pruned targets shape: {test_pruned_targets.shape}')
 
-    k_means_classifier = KmeansPlusPlusClassifier(n_clusters=20)
+    k_means = KMeansClassifier(n_clusters=20)
+    k_means_plus_plus = KMeansPlusPlusClassifier(n_clusters=20)
 
-    k_means_classifier.train(test_pruned_features, n_epochs=10)
+    k_means.train(test_pruned_features, n_epochs=10)
+    k_means_plus_plus.train(test_pruned_features, n_epochs=10)
 
-    predicted_targets = k_means_classifier.run(test_pruned_features)
+    predicted_targets = k_means.run(test_pruned_features)
+    predicted_targets_plus = k_means_plus_plus.run(test_pruned_features)
 
     correct = 0
-    for prediction, actual in zip(predicted_targets, test_pruned_targets):
+    correct_plus = 0
+    for prediction, prediction_plus, actual in zip(predicted_targets, predicted_targets_plus, test_pruned_targets):
 
         if prediction == actual:
             correct += 1
 
+        if prediction_plus == actual:
+            correct_plus += 1
+
     accuracy = correct / len(predicted_targets)
-    print(f'accuracy of kmeans plus plus classifer: { accuracy }')
+    accuracy_plus = correct_plus / len(predicted_targets)
+
+    print(f'accuracy of kmeans classifer: { accuracy }')
+    print(f'accuracy of kmeans plus plus classifier: { accuracy_plus}')
 
 
 if __name__ == '__main__':

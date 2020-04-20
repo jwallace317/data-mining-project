@@ -150,7 +150,7 @@ class KMeansClassifier():
         return predicted_targets
 
 
-class KmeansPlusPlusClassifier():
+class KMeansPlusPlusClassifier():
 
     def __init__(self, n_clusters=1):
 
