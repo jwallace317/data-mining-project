@@ -1,4 +1,5 @@
-env/
+venv/
 __pycache__/
 .coverage
 coverage_reports/
+.pytest_cache/
