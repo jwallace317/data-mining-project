@@ -4,11 +4,13 @@ Main Module
 
 # import necessary modules
 import time
+
+import numpy as np
 from sklearn.model_selection import train_test_split
+
 import constants
 import utils
-from naive_bayes_classifier import NaiveBayesClassifier
-from k_nearest_neighbors import KNearestNeighbors
+from k_means_classifier import KMeansClassifier
 
 
 # task main
@@ -54,157 +56,37 @@ def main():
     elapsed_time = end - start
     print(f'\nELAPSED TIME: { elapsed_time }\n')
 
-    # create unpruned naive bayes classifier
-    start = time.time()
-    print('CREATING UNPRUNED NAIVE BAYES CLASSIFIER\n')
+    train_features, test_features, train_targets, test_targets = train_test_split(features, targets, test_size=0.2)
+    train_pruned_features, test_pruned_features, train_pruned_targets, test_pruned_targets = train_test_split(pruned_features, pruned_targets, test_size=0.2)
 
-    nb_classifier = NaiveBayesClassifier(
-        constants.DATASET_RELATIVE_PATH,
-        token_ids)
+    print(f'train features shape: {train_features.shape}')
+    print(f'train targets shape: {train_targets.shape}')
+    print(f'test features shape: {test_features.shape}')
+    print(f'test targets shape: {test_targets.shape}')
+    print(f'train pruned features shape: {train_pruned_features.shape}')
+    print(f'train pruned targets shape: {train_pruned_targets.shape}')
+    print(f'test pruned features shape: {test_pruned_features.shape}')
+    print(f'test pruned targets shape: {test_pruned_targets.shape}')
 
-    end = time.time()
-    elapsed_time = end - start
-    print(f'\nELAPSED TIME: { elapsed_time }\n')
+    k_means_classifier = KMeansClassifier(n_clusters=20)
 
-    # create pruned naive bayes classifier
-    start = time.time()
-    print('CREATING PRUNED NAIVE BAYES CLASSIFIER\n')
+    k_means_classifier.train(test_pruned_features, n_epochs=100)
 
-    pruned_nb_classifier = NaiveBayesClassifier(
-        constants.DATASET_RELATIVE_PATH,
-        pruned_token_ids)
+    k_means_classifier.find_cluster_targets(test_pruned_features, test_pruned_targets)
 
-    end = time.time()
-    elapsed_time = end - start
-    print(f'\nELAPSED TIME: { elapsed_time }\n')
-
-    # create train and test sets for the unpruned features and targets matrices
-    start = time.time()
-    print('CREATING TRAIN AND TEST SETS FOR UNPRUNED DATA\n')
-
-    train_features, test_features, train_targets, test_targets = train_test_split(
-        features,
-        targets,
-        test_size=0.0025)
-
-    end = time.time()
-    elapsed_time = end - start
-    print(f'\nELAPSED TIME: { elapsed_time }\n')
-
-    # create train and test sets for the pruned features and targets matrices
-    start = time.time()
-    print('CREATING TRAIN AND TEST SETS FOR PRUNED DATA\n')
-
-    pruned_train_features, pruned_test_features, pruned_train_targets, pruned_test_targets = train_test_split(
-        pruned_features,
-        pruned_targets,
-        test_size=0.0025)
-
-    end = time.time()
-    elapsed_time = end - start
-    print(f'\nELAPSED TIME: { elapsed_time }\n')
-
-    # test pruned data set with naive bayes classifier
-    start = time.time()
-    print('TESTING PRUNED DATA SET WITH NAIVE BAYES CLASSIFIER\n')
-
-    pruned_sample_size = len(pruned_test_targets)
-    print(f'sample size = { pruned_sample_size }')
-
-    pruned_correct = 0
-    for feature, target in zip(pruned_test_features, pruned_test_targets):
-        prediction = pruned_nb_classifier.predict(feature)
-
-        if prediction == target:
-            pruned_correct += 1
-
-    pruned_accuracy = pruned_correct / pruned_sample_size
-    print(f'accuracy = { pruned_accuracy }')
-
-    end = time.time()
-    elapsed_time = end - start
-    print(f'\nELAPSED TIME: { elapsed_time }\n')
-
-    # test unpruned data set with naive bayes classifier
-    start = time.time()
-    print('TESTING UNPRUNED DATA SET WITH NAIVE BAYES CLASSIFIER\n')
-
-    sample_size = len(test_targets)
-    print(f'sample size = { sample_size }')
+    predicted_targets = k_means_classifier.run(test_pruned_features)
 
     correct = 0
-    for feature, target in zip(test_features, test_targets):
-        prediction = nb_classifier.predict(feature)
+    for prediction, actual in zip(predicted_targets, test_pruned_targets):
+        print(prediction)
+        print(actual)
 
-        if prediction == target:
+        if prediction == actual:
+            print('CORRECT')
             correct += 1
 
-    accuracy = correct / sample_size
-    print(f'accuracy = { accuracy }')
-
-    end = time.time()
-    elapsed_time = end - start
-    print(f'\nELAPSED TIME: { elapsed_time }\n')
-
-    # create train and test sets for the unpruned features and targets matrices
-    start = time.time()
-    print('CREATING TRAIN AND TEST SETS FOR UNPRUNED DATA\n')
-
-    train_features, test_features, train_targets, test_targets = train_test_split(
-        features,
-        targets,
-        test_size=0.1)
-
-    end = time.time()
-    elapsed_time = end - start
-    print(f'\nELAPSED TIME: { elapsed_time }\n')
-
-    # create train and test sets for the pruned features and targets matrices
-    start = time.time()
-    print('CREATING TRAIN AND TEST SETS FOR PRUNED DATA\n')
-
-    pruned_train_features, pruned_test_features, pruned_train_targets, pruned_test_targets = train_test_split(
-        pruned_features,
-        pruned_targets,
-        test_size=0.1)
-
-    end = time.time()
-    elapsed_time = end - start
-    print(f'\nELAPSED TIME: { elapsed_time }\n')
-
-    # create k-nearest neighbors classifier
-    start = time.time()
-    print('CREATING K NEAREST NEIGHBORS CLASSIFIER\n')
-
-    knn_classifier = KNearestNeighbors(
-        pruned_test_features,
-        pruned_test_targets,
-        k_neighbors=25)
-
-    end = time.time()
-    elapsed_time = end - start
-    print(f'\nELAPSED TIME: { elapsed_time }\n')
-
-    # test pruned data set with k nearest neighbors classifier
-    start = time.time()
-    print('TESTING PRUNED DATA SET WITH K NEAREST NEIGHBORS CLASSIFIER')
-
-    pruned_sample_size = len(pruned_test_targets)
-    print(f'sample size = { pruned_sample_size }')
-
-    pruned_correct = 0
-    for feature, target in zip(pruned_test_features, pruned_test_targets):
-        prediction = knn_classifier.predict(feature)
-
-        if prediction == target:
-            pruned_correct += 1
-
-    pruned_accuracy = pruned_correct / pruned_sample_size
-    print(f'accuracy = { pruned_accuracy }')
-
-    end = time.time()
-    elapsed_time = end - start
-    print(f'\nELAPSED TIME: { elapsed_time }\n')
+    print(correct)
+    print(f'accurcy: { correct / len(predicted_targets) }')
 
 
 if __name__ == '__main__':
