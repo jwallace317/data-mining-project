@@ -129,23 +129,28 @@ class KMeansClassifier():
 
             print(f'epoch { epoch + 1 } finished')
 
-    def run(self, features):
+    def run(self, features, targets):
         """
         Run
 
-        This method will run the given features through the K-Means Classifier
+        This method will run the given features through the K-Means classifier
         and will return the predicted targets of each feature according to the
         current clusters.
 
         Args:
             features (np.array): the features matrix
+            targets (np.array): the targets matrix
 
         Returns:
             predicted_targets (np.array): the predicted targets of the features
+            accuracy (float): the accuracy of the predicted targets
         """
 
         distance = self.compute_distance(features, self.centroids)
         predicted_targets = self.find_closest_cluster(distance)
+
+        accuracy = np.sum(predicted_targets == targets.flatten()) / len(predicted_targets)
+        print(f'accuracy of the K-Means classifier: { accuracy }')
 
         return predicted_targets
 
@@ -254,16 +259,17 @@ class KMeansPlusPlusClassifier():
 
         return centroids
 
-    def run(self, features):
+    def run(self, features, targets):
         """
         Run
 
-        This method will run the given features through the K-Means Classifier
+        This method will run the given features through the K-Means++ classifier
         and will return the predicted targets of each feature according to the
         current clusters.
 
         Args:
             features (np.array): the features matrix
+            targets (np.array): the targets matrix
 
         Returns:
             predicted_targets (np.array): the predicted targets of the features
@@ -271,6 +277,9 @@ class KMeansPlusPlusClassifier():
 
         distance = self.compute_distance(features, self.centroids)
         predicted_targets = self.find_closest_cluster(distance)
+
+        accuracy = np.sum(predicted_targets == targets.flatten()) / len(predicted_targets)
+        print(f'accuracy of the K-Means++ classifier: { accuracy }')
 
         return predicted_targets
 
